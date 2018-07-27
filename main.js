@@ -1,5 +1,6 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, ipcMain} = require('electron')
+const {sendPdf, responsePdf} = require('./events.js');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -48,3 +49,12 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+ipcMain.on('asynchronous-message', (event, arg) => {
+  if(arg.type === sendPdf) {
+      event.sender.send('asynchronous-reply', {
+          type: responsePdf,
+          payload: 'hihihi,'+arg.payload
+      })
+  }
+})
