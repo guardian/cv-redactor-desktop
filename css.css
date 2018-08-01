@@ -1,0 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-size: 1em;
+  background: transparent;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+:root {
+  --spacing: 1em;
+  --bg: #f6f8fa;
+  --border: hsla(0, 0%, 0%, .1);
+  --bright: #00b2ff;
+  font-size: .8em;
+  background: var(--bg);
+}
+
+header {
+  background: linear-gradient(to bottom, #444, #333);
+  color: white;
+  font-size: 1.2em;
+  padding: var(--spacing);
+}
+
+.drop-target {
+  background: #fff;
+}
+
+.drop-target__button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: none;
+  appearance: none;
+  margin: calc(var(--spacing)*1.5) auto;
+}
+
+.drop-target__button strong {
+  font-weight: 800;
+  color: var(--bright);
+}
+
+.drop-target__button span {
+  color: #666;
+  font-size: .9em;
+}
+
+.drop-target__button box {
+  display: block;
+  border: 2px solid var(--bright);
+  border-radius: 2px;
+  height: 6em;
+  width: 6em;
+  display: flex;
+  color: var(--bright);
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing);
+}
+
+.sc {
+  padding: var(--spacing);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+  display: block;
+  width: 100%;
+}
+
+.input-wrap input {
+  border: 1px solid var(--border);
+  background: #fff;
+  border-radius: 1px;
+  padding: .4em;
+  display: block;
+  width: 100%;
+}
+
+.input-wrap input:focus {
+  outline: none;
+  border-color: var(--bright);
+  box-shadow: 0 0 0 1px var(--bright);
+}

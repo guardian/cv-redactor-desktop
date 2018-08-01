@@ -1,23 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Hello World!</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    <form id="form">
-        <input type="file" name="fileToUpload" id="fileToUpload">
-        <button type="submit">go</button>
-    </form>
-    <textarea id="contents"></textarea>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
 
-    <script>
-        require('./renderer.js')
-    </script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Redactor</title>
+</head>
+
+<link rel="stylesheet" href="./css.css" />
+
+<body>
+  <section class="sc">
+    <fieldset class="input-wrap">
+      <label>Candidate name</label>
+      <input type="text" value="" name="candidate-name" required />
+    </fieldset>
+  </section>
+  <button class="sc drop-target">
+    <div class="drop-target__button" id="upload">
+      <box>icon</box>
+      <strong>Choose a Resume</strong>
+      <span>or drag and drop it its cool</span>
+    </div>
+  </button>
+  <section class="sc results">
+  </section>
+  <section class="sc info">
+    <strong>About this tool</strong>
+    <p>
+      This super cool tool lets you anonymize resumes to unbias your hiring process.
+    </p>
+    <!-- All of the Node.js APIs are available in this renderer process. -->
+    We are using Node.js
+    <script>document.write(process.versions.node)</script>, Chromium
+    <script>document.write(process.versions.chrome)</script>, and Electron
+    <script>document.write(process.versions.electron)</script>.
+  </section>
+
+
+  <script>
+    require('./renderer.js')
+  </script>
+</body>
+
 </html>
