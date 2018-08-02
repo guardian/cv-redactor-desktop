@@ -30,7 +30,7 @@ const sendSinglePdf = (path, name) => {
 document.querySelector('.drop-target').addEventListener('drop', ev => {
 	ev.preventDefault();
 	if (ev.dataTransfer.files.length === 1) {
-		sendSinglePdf(ev.dataTransfer.files[0].path, 'test');
+		sendSinglePdf(ev.dataTransfer.files[0].path, $candidateName.value);
 	}
 });
 
