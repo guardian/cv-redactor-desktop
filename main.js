@@ -28,8 +28,12 @@ if (process.platform === 'win32') {
 function createWindow() {
 	// Create the browser window.
 	mainWindow = new BrowserWindow({
-		width: 1024,
-		height: 768,
+		minWidth: 300,
+		maxWidth: 500,
+		minHeight: 500,
+		maximizable: false,
+		width: 350,
+		height: 500,
 		show: false,
 	});
 

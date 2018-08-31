@@ -1,0 +1,11 @@
+@import '../../vars.css';
+
+.root {
+  padding: var(--spacing);
+  overflow: hidden;
+  display: block;
+  width: 100%;
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--border);
+  }
+}

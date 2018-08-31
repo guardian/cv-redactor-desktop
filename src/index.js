@@ -3,14 +3,33 @@
 import React from 'react';
 import { render } from 'react-dom';
 
+import './global.css';
+import { Section } from './elements/Section/index.js';
+import { InputWrap } from './elements/InputWrap/index.js';
+import { DropZone } from './elements/DropZone/index';
+
+const chromevers = process.versions.chrome;
+
 // Create main App component
 class App extends React.Component {
 	render() {
 		return (
 			<div>
-				<h1>Hello, this is your first Electron app!</h1>
-
-				<p>I hope you enjoy using this electron react app.</p>
+				<Section>
+					<InputWrap title="Candidate name">
+						<input type="text" value="" name="candidate-name" required />
+					</InputWrap>
+				</Section>
+				<Section>
+					<DropZone />
+				</Section>
+				<Section title="About this tool">
+					<p>
+						This super cool tool lets you anonymize resumes to unbias your
+						hiring process.
+					</p>
+					<marquee>{chromevers}</marquee>
+				</Section>
 			</div>
 		);
 	}
