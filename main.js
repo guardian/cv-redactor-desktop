@@ -1,7 +1,8 @@
-// Import parts of electron to use
 const { app, BrowserWindow, ipcMain, shell } = require('electron');
+const { sendPdf, responsePdf } = require('./src/events.js');
 const path = require('path');
 const url = require('url');
+const fs = require('fs');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -131,6 +132,7 @@ ipcMain.on('asynchronous-message', async (event, arg) => {
 		});
 		shell.openItem(redactedData);
 	} else {
+		console.log(arg);
 		throw 'no, bad, wrong';
 	}
 });

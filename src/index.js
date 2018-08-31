@@ -1,4 +1,6 @@
-// src/index.js
+const { ipcRenderer } = require('electron');
+const { sendPdf, responsePdf } = require('./events.js');
+const overrideDefaults = require('./../renderer/overrides');
 
 import React from 'react';
 import { render } from 'react-dom';
@@ -7,10 +9,27 @@ import './global.css';
 import { Section } from './elements/Section/index.js';
 import { InputWrap } from './elements/InputWrap/index.js';
 import { DropZone } from './elements/DropZone/index';
+overrideDefaults();
 
-const chromevers = process.versions.chrome;
+ipcRenderer.on('asynchronous-reply', (event, arg) => {
+	if (arg.type && arg.payload && arg.type === responsePdf) {
+		console.log({
+			payload: arg.payload,
+			data: arg.payload.data.toString(),
+		});
+	}
+});
 
-// Create main App component
+const onDrop = path => {
+	ipcRenderer.send('asynchronous-message', {
+		type: sendPdf,
+		payload: {
+			path,
+			name: 'dsfdsfds',
+		},
+	});
+};
+
 class App extends React.Component {
 	render() {
 		return (
@@ -21,14 +40,14 @@ class App extends React.Component {
 					</InputWrap>
 				</Section>
 				<Section>
-					<DropZone />
+					<DropZone onDrop={onDrop} />
 				</Section>
 				<Section title="About this tool">
 					<p>
 						This super cool tool lets you anonymize resumes to unbias your
 						hiring process.
 					</p>
-					<marquee>{chromevers}</marquee>
+					<marquee>{process.versions.chrome}</marquee>
 				</Section>
 			</div>
 		);
