@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import styles from './index.css';
 import { remote } from 'electron';
 import { Button } from '../Button/index';
+import { InputWrap } from '../InputWrap/index';
 
 export class DropZone extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			resumes: ['sss'],
+			resumes: ['test'],
 		};
 	}
 
@@ -59,8 +60,11 @@ export class DropZone extends Component {
 		) : (
 			<div>
 				{JSON.stringify(this.state.resumes)}
-				<Button onClick={e => this.onSubmit(e)}>send</Button>
-				<Button onClick={e => this.onClear(e)}>clear</Button>
+				<InputWrap title="Candidate name">
+					<input type="text" value="" name="candidate-name" required onChan />
+				</InputWrap>
+				<Button onClick={e => this.onSubmit(e)}>Send</Button>
+				<Button onClick={e => this.onClear(e)}>Clear</Button>
 			</div>
 		);
 	}

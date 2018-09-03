@@ -33,11 +33,6 @@ class App extends React.Component {
 	render() {
 		return (
 			<div>
-				<Section>
-					<InputWrap title="Candidate name">
-						<input type="text" value="" name="candidate-name" required />
-					</InputWrap>
-				</Section>
 				<Section center white>
 					<DropZone onDrop={onDrop} />
 				</Section>
@@ -46,7 +41,6 @@ class App extends React.Component {
 						This super cool tool lets you anonymize resumes to unbias your
 						hiring process.
 					</p>
-					<marquee>{process.versions.chrome}</marquee>
 				</Section>
 			</div>
 		);
