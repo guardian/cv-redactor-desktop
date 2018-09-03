@@ -1,0 +1,12 @@
+@import '../../vars.css';
+
+.root {
+  color: #fff;
+  background-image: linear-gradient(to bottom, #f093fb 0%, #f5576c 100%);
+  text-align: center;
+  border-radius: 2px;
+  padding: .4em;
+  display: block;
+  width: 100%;
+  display: block
+}

@@ -1,30 +1,54 @@
 import React, { Component } from 'react';
 import styles from './index.css';
-const { sendPdf, responsePdf } = require('./../../events.js');
-const { ipcRenderer } = require('electron');
-const { dialog } = require('electron').remote;
+import { remote } from 'electron';
+import { Button } from '../Button/index';
 
 export class DropZone extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			resumes: ['sss'],
+		};
+	}
+
+	pushResumes(resumes) {
+		if (resumes.length >= 0) {
+			this.setState({
+				resumes: [...this.state.resumes, ...resumes],
+			});
+		}
+	}
+
 	onClick(ev) {
 		ev.preventDefault();
-		const files = dialog.showOpenDialog({
+		const files = remote.dialog.showOpenDialog({
 			properties: ['openFile'],
 			filters: [{ name: 'PDF Files', extensions: ['pdf'] }],
 		});
-		if (files.length === 1) {
-			this.props.onDrop(files[0]);
-		}
+		this.pushResumes(files);
 	}
 
 	onDrop(ev) {
 		ev.preventDefault();
-		if (ev.dataTransfer.files.length === 1) {
-			this.props.onDrop(ev.dataTransfer.files[0].path);
+		this.pushResumes(ev.dataTransfer.files.map(_ => _.path));
+	}
+
+	onSubmit(ev) {
+		ev.preventDefault();
+		if (this.state.resumes.length >= 1) {
+			this.props.onDrop(this.state.resumes[0]);
 		}
 	}
 
+	onClear(ev) {
+		ev.preventDefault();
+		this.setState({
+			resumes: [],
+		});
+	}
+
 	render() {
-		return (
+		return this.state.resumes.length === 0 ? (
 			<button onDrop={e => this.onDrop(e)} onClick={e => this.onClick(e)}>
 				<div className={styles.button}>
 					<x-box>icon</x-box>
@@ -32,6 +56,12 @@ export class DropZone extends Component {
 					<span>or drag and drop it</span>
 				</div>
 			</button>
+		) : (
+			<div>
+				{JSON.stringify(this.state.resumes)}
+				<Button onClick={e => this.onSubmit(e)}>send</Button>
+				<Button onClick={e => this.onClear(e)}>clear</Button>
+			</div>
 		);
 	}
 }

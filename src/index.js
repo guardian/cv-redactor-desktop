@@ -1,14 +1,13 @@
-const { ipcRenderer } = require('electron');
-const { sendPdf, responsePdf } = require('./events.js');
-const overrideDefaults = require('./../renderer/overrides');
-
+import { ipcRenderer } from 'electron';
+import { sendPdf, responsePdf } from './events.js';
+import overrideDefaults from './renderer/overrides';
 import React from 'react';
 import { render } from 'react-dom';
-
 import './global.css';
 import { Section } from './elements/Section/index.js';
 import { InputWrap } from './elements/InputWrap/index.js';
 import { DropZone } from './elements/DropZone/index';
+
 overrideDefaults();
 
 ipcRenderer.on('asynchronous-reply', (event, arg) => {
@@ -39,7 +38,7 @@ class App extends React.Component {
 						<input type="text" value="" name="candidate-name" required />
 					</InputWrap>
 				</Section>
-				<Section>
+				<Section center white>
 					<DropZone onDrop={onDrop} />
 				</Section>
 				<Section title="About this tool">
