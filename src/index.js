@@ -19,12 +19,12 @@ ipcRenderer.on('asynchronous-reply', (event, arg) => {
 	}
 });
 
-const onDrop = path => {
+const onDrop = (path, name) => {
 	ipcRenderer.send('asynchronous-message', {
 		type: sendPdf,
 		payload: {
 			path,
-			name: 'dsfdsfds',
+			name,
 		},
 	});
 };

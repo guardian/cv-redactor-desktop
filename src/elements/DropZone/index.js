@@ -2,20 +2,30 @@ import React, { Component } from 'react';
 import styles from './index.css';
 import { remote } from 'electron';
 import { Button } from '../Button/index';
-import { InputWrap } from '../InputWrap/index';
+import { ResumeWrap } from '../ResumeWrap/index';
+
+class Resume {
+	constructor(fileName) {
+		this.fileName = fileName;
+		this.name = null;
+	}
+	setName(name) {
+		this.name = name;
+	}
+}
 
 export class DropZone extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			resumes: ['test'],
+			resumes: [],
 		};
 	}
 
 	pushResumes(resumes) {
 		if (resumes.length >= 0) {
 			this.setState({
-				resumes: [...this.state.resumes, ...resumes],
+				resumes: [...this.state.resumes, ...resumes.map(r => new Resume(r))],
 			});
 		}
 	}
@@ -31,13 +41,16 @@ export class DropZone extends Component {
 
 	onDrop(ev) {
 		ev.preventDefault();
-		this.pushResumes(ev.dataTransfer.files.map(_ => _.path));
+		this.pushResumes([...ev.dataTransfer.files].map(_ => _.path));
 	}
 
 	onSubmit(ev) {
 		ev.preventDefault();
 		if (this.state.resumes.length >= 1) {
-			this.props.onDrop(this.state.resumes[0]);
+			this.props.onDrop(
+				this.state.resumes[0].fileName,
+				this.state.resumes[0].name
+			);
 		}
 	}
 
@@ -59,10 +72,13 @@ export class DropZone extends Component {
 			</button>
 		) : (
 			<div>
-				{JSON.stringify(this.state.resumes)}
-				<InputWrap title="Candidate name">
-					<input type="text" value="" name="candidate-name" required onChan />
-				</InputWrap>
+				{this.state.resumes.map(resume => (
+					<ResumeWrap
+						key={resume.fileName}
+						fileName={resume.fileName}
+						onNameChange={name => resume.setName(name)}
+					/>
+				))}
 				<Button onClick={e => this.onSubmit(e)}>Send</Button>
 				<Button onClick={e => this.onClear(e)}>Clear</Button>
 			</div>
