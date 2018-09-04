@@ -5,7 +5,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import './global.css';
 import { Section } from './elements/Section/index.js';
-import { InputWrap } from './elements/InputWrap/index.js';
+import { SectionWrap } from './elements/Section/SectionWrap/index.js';
 import { DropZone } from './elements/DropZone/index';
 
 overrideDefaults();
@@ -32,8 +32,8 @@ const onDrop = (path, name) => {
 class App extends React.Component {
 	render() {
 		return (
-			<div>
-				<Section center white>
+			<SectionWrap>
+				<Section center white grows>
 					<DropZone onDrop={onDrop} />
 				</Section>
 				<Section title="About this tool">
@@ -42,7 +42,7 @@ class App extends React.Component {
 						hiring process.
 					</p>
 				</Section>
-			</div>
+			</SectionWrap>
 		);
 	}
 }
