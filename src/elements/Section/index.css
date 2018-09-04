@@ -8,6 +8,9 @@
   &:not(:last-child) {
     border-bottom: 1px solid var(--border);
   }
+  & > * {
+    max-width: 100%;
+  }
 }
 
 .center {
