@@ -25,7 +25,7 @@ export class ResumeWrap extends Component {
 
 		return (
 			<div>
-				<h1>{fileName}</h1>
+				<h1>📂 {fileName}</h1>
 				<InputWrap title="Candidate name">
 					<input
 						type="text"

@@ -71,7 +71,7 @@ export class DropZone extends Component {
 				</div>
 			</button>
 		) : (
-			<div>
+			<form onSubmit={e => this.onSubmit(e)}>
 				{this.state.resumes.map(resume => (
 					<ResumeWrap
 						key={resume.fileName}
@@ -79,9 +79,9 @@ export class DropZone extends Component {
 						onNameChange={name => resume.setName(name)}
 					/>
 				))}
-				<Button onClick={e => this.onSubmit(e)}>Send</Button>
+				<Button type="submit">Anonimyze</Button>
 				<Button onClick={e => this.onClear(e)}>Clear</Button>
-			</div>
+			</form>
 		);
 	}
 }
