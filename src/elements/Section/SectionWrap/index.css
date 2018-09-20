@@ -1,0 +1,15 @@
+@import '../../../vars.css';
+
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.root > * {
+  flex: 0 0 auto;
+}
+
+.root > *[data-grows] {
+  flex: 1 0 auto;
+}
