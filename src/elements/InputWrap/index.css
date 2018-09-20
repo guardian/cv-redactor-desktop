@@ -1,0 +1,16 @@
+@import '../../vars.css';
+
+.root input {
+  border: 1px solid var(--border);
+  background: #fff;
+  border-radius: 1px;
+  padding: .4em;
+  display: block;
+  width: 100%;
+}
+
+.root input:focus {
+  outline: none;
+  border-color: var(--bright);
+  box-shadow: 0 0 0 1px var(--bright);
+}

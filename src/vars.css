@@ -1,0 +1,11 @@
+:root {
+  --spacing: 1em;
+  --bg: #f5f5f5;
+  --border: hsla(0, 0%, 0%, .125);
+  --bright: #00b2ff;
+  --bright-darker: #0094ff;
+  font-size: .85em;
+  background: var(--bg);
+  height: 100%;
+  width: 100%;
+}
