@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="77px" height="104px" viewBox="0 0 77 104" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M52.7243507,1.17157288 L71.8284271,20.2756493 C72.5785726,21.0257948 73,22.0432104 73,23.1040764 L73,94.8722296 C73,96.6552671 72.8143488,97.3018396 72.4657346,97.9536914 C72.1171204,98.6055433 71.6055433,99.1171204 70.9536914,99.4657346 C70.3018396,99.8143488 69.6552671,100 67.8722296,100 L5.1277704,100 C3.34473292,100 2.69816044,99.8143488 2.04630859,99.4657346 C1.39445674,99.1171204 0.882879593,98.6055433 0.534265408,97.9536914 C0.185651222,97.3018396 0,96.6552671 0,94.8722296 L0,5.1277704 C0,3.34473292 0.185651222,2.69816044 0.534265408,2.04630859 C0.882879593,1.39445674 1.39445674,0.882879593 2.04630859,0.534265408 C2.69816044,0.185651222 3.34473292,-1.77635684e-15 5.1277704,-1.77635684e-15 L49.8959236,-6.21724894e-15 C50.9567896,-6.41212685e-15 51.9742052,0.421427361 52.7243507,1.17157288 Z" id="path-1"></path>
+        <filter x="-5.5%" y="-2.0%" width="111.0%" height="108.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.05 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-70.000000, -40.000000)">
+            <g id="Group-3" transform="translate(72.000000, 40.000000)">
+                <g id="Combined-Shape">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+                <path d="M72.844617,22 L56.1277704,22 C54.3447329,22 53.6981604,21.8143488 53.0463086,21.4657346 C52.3944567,21.1171204 51.8828796,20.6055433 51.5342654,19.9536914 C51.1856512,19.3018396 51,18.6552671 51,16.8722296 L51,0.155383006 C51.6458987,0.340889064 52.2406804,0.687902513 52.7243507,1.17157288 L71.8284271,20.2756493 C72.3120975,20.7593196 72.6591109,21.3541013 72.844617,22 Z" id="Combined-Shape" fill="#E3E3E3"></path>
+                <g id="Group-2" opacity="0.300000012" transform="translate(5.000000, 36.000000)" fill="#000000">
+                    <rect id="Rectangle-Copy-2" x="0" y="0" width="58" height="2"></rect>
+                    <rect id="Rectangle-Copy-3" x="0" y="8" width="59" height="2"></rect>
+                    <rect id="Rectangle-Copy-4" transform="translate(28.500000, 41.000000) scale(-1, -1) translate(-28.500000, -41.000000) " x="0" y="40" width="57" height="2"></rect>
+                    <rect id="Rectangle-Copy-5" transform="translate(23.500000, 25.000000) scale(-1, -1) translate(-23.500000, -25.000000) " x="0" y="24" width="47" height="2"></rect>
+                    <rect id="Rectangle-Copy-6" transform="translate(29.500000, 33.000000) scale(-1, -1) translate(-29.500000, -33.000000) " x="0" y="32" width="59" height="2"></rect>
+                    <rect id="Rectangle-Copy-7" transform="translate(25.500000, 17.000000) scale(-1, -1) translate(-25.500000, -17.000000) " x="0" y="16" width="51" height="2"></rect>
+                </g>
+                <g id="Group" opacity="0.300000012" transform="translate(5.000000, 11.000000)" fill="#000000">
+                    <rect id="Rectangle" x="0" y="0" width="33" height="2"></rect>
+                    <rect id="Rectangle-Copy" x="0" y="6" width="30" height="2"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

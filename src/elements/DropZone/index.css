@@ -1,5 +1,9 @@
 @import '../../vars.css';
 
+.wrap {
+  outline: none;
+}
+
 .button {
   display: flex;
   flex-direction: column;
@@ -9,25 +13,21 @@
   margin: calc(var(--spacing)*1.5) auto;
 }
 
-.button strong {
-  font-weight: 800;
-  color: var(--bright);
-}
-
 .button span {
   color: #666;
   font-size: .9em;
+  margin: calc(var(--spacing)*.5) auto;
 }
 
-.button x-box {
+.icon {
   display: block;
-  border: 2px solid var(--bright);
-  border-radius: 2px;
-  height: 6em;
-  width: 6em;
+  border-radius: 100%;
+  height: 12em;
+  width: 12em;
   display: flex;
-  color: var(--bright);
   align-items: center;
   justify-content: center;
-  margin-bottom: var(--spacing);
+  background: var(--bg) url(./resume.svg) no-repeat center center;
+  background-size: 30%;
+  margin-bottom: calc(var(--spacing)*2);
 }
