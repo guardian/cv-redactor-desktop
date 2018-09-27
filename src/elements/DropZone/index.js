@@ -64,10 +64,14 @@ export class DropZone extends Component {
 
 	render() {
 		return this.state.resumes.length === 0 ? (
-			<button onDrop={e => this.onDrop(e)} onClick={e => this.onClick(e)}>
+			<button
+				className={styles.wrap}
+				onDrop={e => this.onDrop(e)}
+				onClick={e => this.onClick(e)}
+			>
 				<div className={styles.button}>
-					<x-box>icon</x-box>
-					<strong>Choose a Resume</strong>
+					<div className={styles.icon} />
+					<Button>Choose a Resume</Button>
 					<span>or drag and drop it</span>
 				</div>
 			</button>
