@@ -28,6 +28,10 @@
   align-items: center;
   justify-content: center;
   background: var(--bg) url(./resume.svg) no-repeat center center;
-  background-size: 30%;
+  background-size: 40%;
   margin-bottom: calc(var(--spacing)*2);
+}
+
+.icon[data-drag-zone-active=true] {
+  background-color: var(--bright)
 }

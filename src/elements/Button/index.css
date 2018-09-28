@@ -11,3 +11,12 @@
   width: 100%;
   display: block
 }
+
+.root:hover {
+  border: 1px solid var(--bright-darkerer);
+}
+
+.root:active {
+  border: 1px solid var(--bright-darkerer);
+  background-image: linear-gradient(to bottom, var(--bright-darker) 0%, var(--bright-darkerer) 100%);
+}

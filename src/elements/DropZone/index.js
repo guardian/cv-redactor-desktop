@@ -20,6 +20,7 @@ export class DropZone extends Component {
 		super(props);
 		this.state = {
 			resumes: [],
+			dragZoneActive: false,
 		};
 	}
 
@@ -42,6 +43,7 @@ export class DropZone extends Component {
 
 	onDrop(ev) {
 		ev.preventDefault();
+		this.onDragZoneChange(false);
 		this.pushResumes([...ev.dataTransfer.files].map(_ => _.path));
 	}
 
@@ -62,15 +64,30 @@ export class DropZone extends Component {
 		});
 	}
 
+	onDragZoneChange(state) {
+		this.setState({
+			dragZoneActive: state === true,
+		});
+	}
+
 	render() {
 		return this.state.resumes.length === 0 ? (
 			<button
 				className={styles.wrap}
 				onDrop={e => this.onDrop(e)}
 				onClick={e => this.onClick(e)}
+				onDragEnter={() => {
+					this.onDragZoneChange(true);
+				}}
+				onDragLeave={() => {
+					this.onDragZoneChange(false);
+				}}
 			>
 				<div className={styles.button}>
-					<div className={styles.icon} />
+					<div
+						data-drag-zone-active={this.state.dragZoneActive}
+						className={styles.icon}
+					/>
 					<Button>Choose a Resume</Button>
 					<span>or drag and drop it</span>
 				</div>
