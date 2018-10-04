@@ -4,6 +4,7 @@ import { remote } from 'electron';
 import { Button } from '../Button/index';
 import { ResumeWrap } from '../ResumeWrap/index';
 import { ListWrap } from '../Section/ListWrap/index';
+import { HelpTextWrap } from '../Section/HelpTextWrap/index';
 
 class Resume {
 	constructor(fileName) {
@@ -76,20 +77,20 @@ export class DropZone extends Component {
 				className={styles.wrap}
 				onDrop={e => this.onDrop(e)}
 				onClick={e => this.onClick(e)}
-				onDragEnter={() => {
-					this.onDragZoneChange(true);
-				}}
-				onDragLeave={() => {
-					this.onDragZoneChange(false);
-				}}
 			>
 				<div className={styles.button}>
 					<div
 						data-drag-zone-active={this.state.dragZoneActive}
 						className={styles.icon}
+						onDragEnter={() => {
+							this.onDragZoneChange(true);
+						}}
+						onDragLeave={() => {
+							this.onDragZoneChange(false);
+						}}
 					/>
 					<Button>Choose a Resume</Button>
-					<span>or drag and drop it</span>
+					<HelpTextWrap>or drag and drop it</HelpTextWrap>
 				</div>
 			</button>
 		) : (
