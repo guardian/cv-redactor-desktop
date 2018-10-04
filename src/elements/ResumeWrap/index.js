@@ -1,8 +1,10 @@
+import { basename } from 'path';
 import React, { Component } from 'react';
 import styles from './index.css';
 import { remote } from 'electron';
 import { Button } from '../Button/index';
 import { InputWrap } from '../InputWrap/index';
+import { ListWrap } from '../Section/ListWrap';
 
 export class ResumeWrap extends Component {
 	constructor(props) {
@@ -25,16 +27,18 @@ export class ResumeWrap extends Component {
 
 		return (
 			<div>
-				<h1>📂 {fileName}</h1>
-				<InputWrap title="Candidate name">
-					<input
-						type="text"
-						value={this.state.name}
-						name="candidate-name"
-						required
-						onChange={e => this.onChange(e)}
-					/>
-				</InputWrap>
+				<ListWrap>
+					<h1>📂 {basename(fileName)}</h1>
+					<InputWrap title="Candidate name">
+						<input
+							type="text"
+							value={this.state.name}
+							name="candidate-name"
+							required
+							onChange={e => this.onChange(e)}
+						/>
+					</InputWrap>
+				</ListWrap>
 			</div>
 		);
 	}

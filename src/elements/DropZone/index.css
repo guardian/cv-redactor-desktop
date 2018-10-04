@@ -13,10 +13,8 @@
   margin: calc(var(--spacing)*1.5) auto;
 }
 
-.button span {
-  color: #666;
-  font-size: .9em;
-  margin: calc(var(--spacing)*.5) auto;
+.button > * {
+  margin-bottom: calc(var(--spacing)*.5);
 }
 
 .icon {
@@ -28,10 +26,12 @@
   align-items: center;
   justify-content: center;
   background: var(--bg) url(./resume.svg) no-repeat center center;
-  background-size: 40%;
+  background-size: 34%;
   margin-bottom: calc(var(--spacing)*2);
+  transition: .05s;
 }
 
 .icon[data-drag-zone-active=true] {
-  background-color: var(--bright)
+  background-color:#fff;
+  box-shadow: 0 0 0 4px var(--bright);
 }
