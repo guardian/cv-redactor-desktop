@@ -16,10 +16,12 @@ export class ResumeWrapList extends Component {
 								<ResumeWrap
 									key={resume.fileName}
 									fileName={resume.fileName}
+									redactedFileName={resume.redactedFileName}
+									baseFileName={resume.baseFileName}
 									onNameChange={name => resume.setName(name)}
 								/>
 								<HelpTextWrap>
-									A new file, {resume.fileName}
+									A new file, {resume.redactedFileName}
 									.redacted.pdf will be saved alongside the original, blocking
 									out the name you provided as well as emails and urls
 								</HelpTextWrap>

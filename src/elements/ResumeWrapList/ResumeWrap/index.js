@@ -21,12 +21,12 @@ export class ResumeWrap extends Component {
 	}
 
 	render() {
-		const { fileName } = this.props;
+		const { baseFileName } = this.props;
 
 		return (
 			<div>
 				<ListWrap>
-					<h1>📂 {basename(fileName)}</h1>
+					<h1>📂 {baseFileName}</h1>
 					<InputWrap title="Candidate name">
 						<input
 							type="text"
