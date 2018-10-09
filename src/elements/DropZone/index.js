@@ -19,7 +19,7 @@ export class DropZone extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			resumes: [new Resume('dsfsdf')],
+			resumes: [],
 			dragZoneActive: false,
 		};
 	}

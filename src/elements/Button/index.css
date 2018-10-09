@@ -8,6 +8,11 @@
   width: 100%;
 }
 
+.base:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--border-darker);
+}
+
 .root {
   composes: base;
   color: #fff;
@@ -30,9 +35,9 @@
 }
 
 .secondary:hover {
-  border-color: red;
+  border-color: var(--border-darker);
 }
 
 .secondary:active {
-  background: red;
+  background-image: linear-gradient(to bottom, rgba(0,0,0,.05), rgba(0,0,0,.1) 100%);
 }

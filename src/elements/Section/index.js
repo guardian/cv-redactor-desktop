@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './index.css';
 
-export const Section = ({ children, title, center, white, grows }) => (
+export const Section = ({ children, center, white, grows }) => (
 	<section
 		data-grows={grows ? 'grows' : null}
 		className={[
@@ -10,7 +10,6 @@ export const Section = ({ children, title, center, white, grows }) => (
 			white ? styles.white : '',
 		].join(' ')}
 	>
-		{title && <strong>{title}</strong>}
 		{children}
 	</section>
 );
