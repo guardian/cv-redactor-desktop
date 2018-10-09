@@ -7,6 +7,7 @@ import './global.css';
 import { Section } from './elements/Section/index.js';
 import { SectionWrap } from './elements/Section/SectionWrap/index.js';
 import { DropZone } from './elements/DropZone/index';
+import { HelpTextWrap } from './elements/Section/HelpTextWrap/index';
 
 overrideDefaults();
 
@@ -36,11 +37,11 @@ class App extends React.Component {
 				<Section center white grows>
 					<DropZone onDrop={onDrop} />
 				</Section>
-				<Section title="About this tool">
-					<p>
-						This super cool tool lets you anonymize resumes to unbias your
-						hiring process.
-					</p>
+				<Section>
+					<HelpTextWrap title="About this tool">
+						This super cool tool lets you redact resumes to unbias your hiring
+						process.
+					</HelpTextWrap>
 				</Section>
 			</SectionWrap>
 		);

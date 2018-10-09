@@ -9,9 +9,6 @@ export class ResumeWrapList extends Component {
 	render() {
 		return (
 			<form onSubmit={e => this.props.onSubmit(e)} className={styles.root}>
-				<Button secondary onClick={e => this.props.onClear(e)}>
-					Choose a different resume
-				</Button>
 				<div className={styles.content}>
 					<ListWrap>
 						{this.props.resumes.map(resume => (
@@ -28,9 +25,12 @@ export class ResumeWrapList extends Component {
 								</HelpTextWrap>
 							</div>
 						))}
-						<Button type="submit">Anonimyze</Button>
+						<Button type="submit">Redact</Button>
 					</ListWrap>
 				</div>
+				<Button secondary onClick={e => this.props.onClear(e)}>
+					Choose a different resume
+				</Button>
 			</form>
 		);
 	}

@@ -2,6 +2,7 @@
   --spacing: 1em;
   --bg: hsla(0, 0%, 0%, .03);
   --border: hsla(0, 0%, 0%, .125);
+  --border-darker: hsla(0, 0%, 0%, .2);
   --bright: #00b2ff;
   --bright-darker: #0094ff;
   --bright-darkerer: #007dd6;
