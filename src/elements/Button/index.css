@@ -1,15 +1,18 @@
 @import '../../vars.css';
 
-.root {
-  color: #fff;
-  background-image: linear-gradient(to bottom, var(--bright) 0%, var(--bright-darker) 100%);
-  border: 1px solid var(--bright-darker);
+.base {
   text-align: center;
   border-radius: 2px;
   padding: .4em;
   display: block;
   width: 100%;
-  display: block
+}
+
+.root {
+  composes: base;
+  color: #fff;
+  background-image: linear-gradient(to bottom, var(--bright) 0%, var(--bright-darker) 100%);
+  border: 1px solid var(--bright-darker);
 }
 
 .root:hover {
@@ -19,4 +22,17 @@
 .root:active {
   border: 1px solid var(--bright-darkerer);
   background-image: linear-gradient(to bottom, var(--bright-darker) 0%, var(--bright-darkerer) 100%);
+}
+
+.secondary {
+  composes: base;
+  border: 1px solid var(--border);
+}
+
+.secondary:hover {
+  border-color: red;
+}
+
+.secondary:active {
+  background: red;
 }

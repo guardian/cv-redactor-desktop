@@ -1,10 +1,8 @@
 import { basename } from 'path';
 import React, { Component } from 'react';
 import styles from './index.css';
-import { remote } from 'electron';
-import { Button } from '../Button/index';
-import { InputWrap } from '../InputWrap/index';
-import { ListWrap } from '../Section/ListWrap';
+import { InputWrap } from '../../InputWrap/index';
+import { ListWrap } from '../../Section/ListWrap';
 
 export class ResumeWrap extends Component {
 	constructor(props) {

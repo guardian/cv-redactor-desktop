@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import styles from './index.css';
 import { remote } from 'electron';
 import { Button } from '../Button/index';
-import { ResumeWrap } from '../ResumeWrap/index';
-import { ListWrap } from '../Section/ListWrap/index';
 import { HelpTextWrap } from '../Section/HelpTextWrap/index';
+import { ResumeWrapList } from '../ResumeWrapList';
 
 class Resume {
 	constructor(fileName) {
@@ -20,7 +19,7 @@ export class DropZone extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			resumes: [],
+			resumes: [new Resume('dsfsdf')],
 			dragZoneActive: false,
 		};
 	}
@@ -94,19 +93,11 @@ export class DropZone extends Component {
 				</div>
 			</button>
 		) : (
-			<form onSubmit={e => this.onSubmit(e)}>
-				<ListWrap>
-					{this.state.resumes.map(resume => (
-						<ResumeWrap
-							key={resume.fileName}
-							fileName={resume.fileName}
-							onNameChange={name => resume.setName(name)}
-						/>
-					))}
-					<Button type="submit">Anonimyze</Button>
-					<Button onClick={e => this.onClear(e)}>Clear</Button>
-				</ListWrap>
-			</form>
+			<ResumeWrapList
+				onSubmit={e => this.onSubmit(e)}
+				onClear={e => this.onClear(e)}
+				resumes={this.state.resumes}
+			/>
 		);
 	}
 }
