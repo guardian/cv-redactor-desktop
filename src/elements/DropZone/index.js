@@ -4,16 +4,7 @@ import { remote } from 'electron';
 import { Button } from '../Button/index';
 import { HelpTextWrap } from '../Section/HelpTextWrap/index';
 import { ResumeWrapList } from '../ResumeWrapList';
-
-class Resume {
-	constructor(fileName) {
-		this.fileName = fileName;
-		this.name = null;
-	}
-	setName(name) {
-		this.name = name;
-	}
-}
+import { Resume } from '../../model/Resume';
 
 export class DropZone extends Component {
 	constructor(props) {
