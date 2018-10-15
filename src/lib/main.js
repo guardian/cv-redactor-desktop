@@ -1,14 +1,18 @@
 var hummus = require('hummus');
 var path = require('path');
 var extractText = require('./parser/text-extraction');
+const fs = require('fs');
 
 function pdfParser() {
 	const termsToHide = ['anna', 'leach', 'laura', 'gonzalez', 'github'];
 	const file = path.join(__dirname, '/../../test.pdf');
+	const redactedFile = path.join(__dirname, '/../../test.redacted.pdf');
 
 	const pdfReader = hummus.createReader(file);
 	const pagesPlacements = extractText(pdfReader);
-	const pdfWriter = hummus.createWriter(file);
+	const pdfWriter = hummus.createWriterToModify(file, {
+		modifiedFilePath: redactedFile,
+	});
 
 	// 1. duplicate file
 	// 2. grab duplicate
@@ -26,16 +30,16 @@ function pdfParser() {
 	const blocksToHide = pagesPlacements.map(page => findWords(page));
 
 	const boxDrawer = page => {
-		console.log('this happened');
-		//const cxt = pdfWriter.startPageContentContext(page);
-		console.log('context', cxt);
-		// cxt.drawRectangle(left,bottom,width,height,[{options}])
-		// ctx.drawRectangle(0,500, 200, 200, {type: 'fill', color: 'black'} )
+		const pageModifier = new hummus.PDFPageModifier(pdfWriter, 0);
+		const ctx = pageModifier.startContext().getContext();
+		page.forEach(word => {
+			ctx.drawRectangle(...word.globalBBox, { type: 'fill', color: 'black' });
+		});
+		pageModifier.endContext().writePage();
 	};
 
-	console.log(pagesPlacements);
-	// console.log("texts with kind ========>", blocksToHide)
-	boxDrawer(pagesPlacements[0]);
+	console.log('texts with kind ========>', blocksToHide);
+	boxDrawer(pagesPlacements[2]);
 	pdfWriter.end();
 }
 
