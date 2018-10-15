@@ -29,17 +29,28 @@ function pdfParser() {
 
 	const blocksToHide = pagesPlacements.map(page => findWords(page));
 
-	const boxDrawer = page => {
-		const pageModifier = new hummus.PDFPageModifier(pdfWriter, 0);
+	const boxDrawer = (page, index) => {
+		const pageModifier = new hummus.PDFPageModifier(pdfWriter, index);
 		const ctx = pageModifier.startContext().getContext();
 		page.forEach(word => {
-			ctx.drawRectangle(...word.globalBBox, { type: 'fill', color: 'black' });
+      console.log("global b box ===>", ...word.globalBBox)
+			ctx.drawRectangle(
+        word.globalBBox[0], 
+        word.globalBBox[1], 
+        (word.globalBBox[2] - word.globalBBox[0]), 
+        (word.globalBBox[3] - word.globalBBox[1]), 
+        { type: 'fill', color: 'black' });
 		});
 		pageModifier.endContext().writePage();
 	};
 
-	console.log('texts with kind ========>', blocksToHide);
-	boxDrawer(pagesPlacements[2]);
+	// console.log('texts with kind ========>', blocksToHide);
+  
+  blocksToHide.forEach( (block, index) => {
+    boxDrawer(block, index)
+  })
+  
+  
 	pdfWriter.end();
 }
 
