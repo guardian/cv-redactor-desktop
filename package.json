@@ -21,6 +21,8 @@
 	"license": "CC0-1.0",
 	"dependencies": {
 		"electron": "^1.8.6",
+		"hummus": "^1.0.90",
+		"lodash": "^4.17.11",
 		"react": "^16.3.2",
 		"react-dom": "^16.3.2"
 	},
