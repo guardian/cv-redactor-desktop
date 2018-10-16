@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import styles from './index.css';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { editCvName } from '../../store/actions/cv';
 import { Button } from '../Button/index';
 import { ResumeWrap } from './ResumeWrap/index';
 import { ListWrap } from '../Section/ListWrap/index';
 import { HelpTextWrap } from '../Section/HelpTextWrap/index';
 
-export class ResumeWrapList extends Component {
+class PreResumeWrapList extends Component {
 	render() {
 		return (
 			<form onSubmit={e => this.props.onSubmit(e)} className={styles.root}>
@@ -14,11 +17,13 @@ export class ResumeWrapList extends Component {
 						{this.props.resumes.map(resume => (
 							<div>
 								<ResumeWrap
-									key={resume.fileName}
+									key={resume.path}
 									fileName={resume.fileName}
 									redactedFileName={resume.redactedFileName}
 									baseFileName={resume.baseFileName}
-									onNameChange={name => resume.setName(name)}
+									onNameChange={name =>
+										this.props.editCvName(resume.path, name)
+									}
 								/>
 								<HelpTextWrap>
 									A new file, {resume.redactedFileName}
@@ -37,3 +42,10 @@ export class ResumeWrapList extends Component {
 		);
 	}
 }
+
+export const ResumeWrapList = connect(
+	state => ({}),
+	dispatch => ({
+		editCvName: bindActionCreators(editCvName, dispatch),
+	})
+)(PreResumeWrapList);

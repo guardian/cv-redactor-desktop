@@ -11,7 +11,4 @@ export class Resume {
 
 		this.name = null;
 	}
-	setName(name) {
-		this.name = name;
-	}
 }

@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { cvs } from './cvs';
+import { reducer as cv } from './actions/cv';
 
 const rootReducer = combineReducers({
-	cvs,
+	cv,
 });
 
 export default rootReducer;
