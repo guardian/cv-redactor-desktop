@@ -134,12 +134,14 @@ ipcMain.on('asynchronous-message', async (event, arg) => {
 	if (arg.type === sendPdf && arg.payload.path && arg.payload.name) {
 		const redactedFileName = arg.payload.path + '.redacted.pdf';
 		pdfParser(arg.payload.path, redactedFileName, arg.payload.name.split(' '));
+		/*
 		event.sender.send('asynchronous-reply', {
 			type: responsePdf,
 			payload: {
 				data,
 			},
 		});
+		*/
 		shell.openItem(redactedFileName);
 	} else {
 		console.log(arg);
