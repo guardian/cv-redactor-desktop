@@ -26,9 +26,9 @@ class PreResumeWrapList extends Component {
 									}
 								/>
 								<HelpTextWrap>
-									A new file, {resume.redactedFileName}
-									.redacted.pdf will be saved alongside the original, blocking
-									out the name you provided as well as emails and urls
+									A new file, {resume.redactedFileName} will be saved alongside
+									the original, blocking out the name you provided as well as
+									emails and urls
 								</HelpTextWrap>
 							</div>
 						))}
