@@ -3,11 +3,15 @@ import { sendPdf, responsePdf } from './events.js';
 import overrideDefaults from './renderer/overrides';
 import React from 'react';
 import { render } from 'react-dom';
+import { Provider } from 'react-redux';
 import './global.css';
 import { Section } from './elements/Section/index.js';
 import { SectionWrap } from './elements/Section/SectionWrap/index.js';
 import { DropZone } from './elements/DropZone/index';
 import { HelpTextWrap } from './elements/Section/HelpTextWrap/index';
+import { configureStore } from './store/configureStore';
+
+const store = configureStore();
 
 overrideDefaults();
 
@@ -33,17 +37,19 @@ const onDrop = (path, name) => {
 class App extends React.Component {
 	render() {
 		return (
-			<SectionWrap>
-				<Section center white grows>
-					<DropZone onDrop={onDrop} />
-				</Section>
-				<Section>
-					<HelpTextWrap title="About this tool">
-						This super cool tool lets you redact resumes to unbias your hiring
-						process.
-					</HelpTextWrap>
-				</Section>
-			</SectionWrap>
+			<Provider store={store}>
+				<SectionWrap>
+					<Section center white grows>
+						<DropZone onDrop={onDrop} />
+					</Section>
+					<Section>
+						<HelpTextWrap title="About this tool">
+							This super cool tool lets you redact resumes to unbias your hiring
+							process.
+						</HelpTextWrap>
+					</Section>
+				</SectionWrap>
+			</Provider>
 		);
 	}
 }
