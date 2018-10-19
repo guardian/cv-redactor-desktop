@@ -3,11 +3,7 @@ var path = require('path');
 var extractText = require('./parser/text-extraction');
 const fs = require('fs');
 
-function pdfParser() {
-	const termsToHide = ['anna', 'leach', 'laura', 'gonzalez', 'github'];
-	const file = path.join(__dirname, '/../../test.pdf');
-	const redactedFile = path.join(__dirname, '/../../test.redacted.pdf');
-
+function pdfParser(file, redactedFile, termsToHide) {
 	const pdfReader = hummus.createReader(file);
 	const pagesPlacements = extractText(pdfReader);
 	const pdfWriter = hummus.createWriterToModify(file, {
@@ -33,25 +29,25 @@ function pdfParser() {
 		const pageModifier = new hummus.PDFPageModifier(pdfWriter, index);
 		const ctx = pageModifier.startContext().getContext();
 		page.forEach(word => {
-      console.log("global b box ===>", ...word.globalBBox)
+			console.log('global b box ===>', ...word.globalBBox);
 			ctx.drawRectangle(
-        word.globalBBox[0], 
-        word.globalBBox[1], 
-        (word.globalBBox[2] - word.globalBBox[0]), 
-        (word.globalBBox[3] - word.globalBBox[1]), 
-        { type: 'fill', color: 'black' });
+				word.globalBBox[0],
+				word.globalBBox[1],
+				word.globalBBox[2] - word.globalBBox[0],
+				word.globalBBox[3] - word.globalBBox[1],
+				{ type: 'fill', color: 'black' }
+			);
 		});
 		pageModifier.endContext().writePage();
 	};
 
 	// console.log('texts with kind ========>', blocksToHide);
-  
-  blocksToHide.forEach( (block, index) => {
-    boxDrawer(block, index)
-  })
-  
-  
+
+	blocksToHide.forEach((block, index) => {
+		boxDrawer(block, index);
+	});
+
 	pdfWriter.end();
 }
 
-pdfParser();
+module.exports = pdfParser;

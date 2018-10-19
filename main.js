@@ -8,6 +8,7 @@ const {
 const path = require('path');
 const url = require('url');
 const fs = require('fs');
+const pdfParser = require('./src/lib/main');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -131,18 +132,15 @@ const handleSinglePdf = (path, name) =>
 
 ipcMain.on('asynchronous-message', async (event, arg) => {
 	if (arg.type === sendPdf && arg.payload.path && arg.payload.name) {
-		const data = await handleSinglePdf(arg.payload.path, arg.payload.name);
-		const redactedData = await saveRedactedPdf(
-			arg.payload.path + 'redacted.txt',
-			data
-		);
+		const redactedFileName = arg.payload.path + '.redacted.pdf';
+		pdfParser(arg.payload.path, redactedFileName, arg.payload.name.split(' '));
 		event.sender.send('asynchronous-reply', {
 			type: responsePdf,
 			payload: {
 				data,
 			},
 		});
-		shell.openItem(redactedData);
+		shell.openItem(redactedFileName);
 	} else {
 		console.log(arg);
 		throw 'no, bad, wrong';
