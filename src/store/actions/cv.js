@@ -1,5 +1,4 @@
 import initialState from '../initialState';
-import { Resume } from '../../model/Resume';
 
 const CLEAR_CV = 'CLEAR_CV';
 const ADD_CV = 'ADD_CV';
@@ -10,7 +9,12 @@ const reducer = (state = initialState.cv, action) => {
 		case CLEAR_CV:
 			return initialState.cv;
 		case ADD_CV:
-			return [...state, new Resume(action.path)];
+			return [
+				...state,
+				{
+					path: action.path,
+				},
+			];
 		case EDIT_CV_NAME:
 			return state.map(
 				item =>

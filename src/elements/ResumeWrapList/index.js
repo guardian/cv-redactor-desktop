@@ -6,7 +6,6 @@ import { editCvName } from '../../store/actions/cv';
 import { Button } from '../Button/index';
 import { ResumeWrap } from './ResumeWrap/index';
 import { ListWrap } from '../Section/ListWrap/index';
-import { HelpTextWrap } from '../Section/HelpTextWrap/index';
 
 class PreResumeWrapList extends Component {
 	render() {
@@ -15,22 +14,11 @@ class PreResumeWrapList extends Component {
 				<div className={styles.content}>
 					<ListWrap>
 						{this.props.resumes.map(resume => (
-							<div>
-								<ResumeWrap
-									key={resume.path}
-									fileName={resume.fileName}
-									redactedFileName={resume.redactedFileName}
-									baseFileName={resume.baseFileName}
-									onNameChange={name =>
-										this.props.editCvName(resume.path, name)
-									}
-								/>
-								<HelpTextWrap>
-									A new file, {resume.redactedFileName} will be saved alongside
-									the original, blocking out the name you provided as well as
-									emails and urls
-								</HelpTextWrap>
-							</div>
+							<ResumeWrap
+								key={resume.path}
+								path={resume.path}
+								onNameChange={name => this.props.editCvName(resume.path, name)}
+							/>
 						))}
 						<Button type="submit">Redact</Button>
 					</ListWrap>

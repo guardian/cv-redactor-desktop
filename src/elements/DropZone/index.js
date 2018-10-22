@@ -41,10 +41,7 @@ class PreDropZone extends Component {
 	onSubmit(ev) {
 		ev.preventDefault();
 		if (this.props.resumes.length >= 1) {
-			this.props.onDrop(
-				this.props.resumes[0].fileName,
-				this.props.resumes[0].name
-			);
+			this.props.onDrop(this.props.resumes[0].path, this.props.resumes[0].name);
 		}
 	}
 

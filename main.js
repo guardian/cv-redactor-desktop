@@ -1,4 +1,5 @@
 const { app, BrowserWindow, ipcMain, shell } = require('electron');
+const { getRedactedFileName } = require('/lib/resume');
 const { sendPdf, responsePdf } = require('./src/events.js');
 const {
 	default: installExtension,
@@ -8,7 +9,7 @@ const {
 const path = require('path');
 const url = require('url');
 const fs = require('fs');
-const pdfParser = require('./src/lib/main');
+const pdfParser = require('./src/lib/redact-pdf');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -132,7 +133,7 @@ const handleSinglePdf = (path, name) =>
 
 ipcMain.on('asynchronous-message', async (event, arg) => {
 	if (arg.type === sendPdf && arg.payload.path && arg.payload.name) {
-		const redactedFileName = arg.payload.path + '.redacted.pdf';
+		const redactedFileName = getRedactedFileName(arg.payload.path);
 		pdfParser(arg.payload.path, redactedFileName, arg.payload.name.split(' '));
 		/*
 		event.sender.send('asynchronous-reply', {
