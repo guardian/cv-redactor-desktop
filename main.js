@@ -1,5 +1,5 @@
 const { app, BrowserWindow, ipcMain, shell } = require('electron');
-const { getRedactedFileName } = require('/lib/resume');
+const { getRedactedFileName } = require('./src/lib/resume.js');
 const { sendPdf, responsePdf } = require('./src/events.js');
 const {
 	default: installExtension,
