@@ -1,12 +1,11 @@
-import overrideDefaults from './lib/renderer-overrides';
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import './global.css';
-import { DropZone } from './views/DropZone/DropZone';
 import { configureStore } from 'store/configureStore';
 import { listen, onDrop } from 'lib/ipc-events';
+import overrideDefaults from 'lib/renderer-overrides';
 import { App } from 'App';
+import './global.css';
 
 const store = configureStore();
 

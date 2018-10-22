@@ -2,13 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as cvActions from 'store/actions/cv';
-import styles from './index.css';
 import { remote } from 'electron';
 import { Button } from 'elements/Button/index';
 import { HelpTextWrap } from 'elements/Section/HelpTextWrap/index';
-import { Section } from 'elements/Section/index.js';
-import { SectionWrap } from 'elements/Section/SectionWrap/index.js';
-import { ResumeWrapList } from 'elements/ResumeWrapList';
+import styles from './index.css';
 
 class PreDropZone extends Component {
 	constructor(props) {
@@ -47,35 +44,26 @@ class PreDropZone extends Component {
 
 	render() {
 		return (
-			<SectionWrap>
-				<Section center white grows>
+			<div
+				className={styles.wrap}
+				onDrop={e => this.onDrop(e)}
+				onClick={e => this.onClick(e)}
+			>
+				<div className={styles.button}>
 					<div
-						className={styles.wrap}
-						onDrop={e => this.onDrop(e)}
-						onClick={e => this.onClick(e)}
-					>
-						<div className={styles.button}>
-							<div
-								data-drag-zone-active={this.state.dragZoneActive}
-								className={styles.icon}
-								onDragEnter={() => {
-									this.onDragZoneChange(true);
-								}}
-								onDragLeave={() => {
-									this.onDragZoneChange(false);
-								}}
-							/>
-							<Button>Choose a Resume</Button>
-							<HelpTextWrap>or drag and drop it</HelpTextWrap>
-						</div>
-					</div>
-				</Section>
-				<Section>
-					<HelpTextWrap title="About this tool">
-						This tool lets you redact resumes to unbias your hiring process.
-					</HelpTextWrap>
-				</Section>
-			</SectionWrap>
+						data-drag-zone-active={this.state.dragZoneActive}
+						className={styles.icon}
+						onDragEnter={() => {
+							this.onDragZoneChange(true);
+						}}
+						onDragLeave={() => {
+							this.onDragZoneChange(false);
+						}}
+					/>
+					<Button>Choose a Resume</Button>
+					<HelpTextWrap>or drag and drop it</HelpTextWrap>
+				</div>
+			</div>
 		);
 	}
 }
