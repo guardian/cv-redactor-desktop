@@ -8,6 +8,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const defaultInclude = path.resolve(__dirname, 'src');
 
 module.exports = {
+	resolve: {
+		modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+	},
 	module: {
 		rules: [
 			{

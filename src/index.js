@@ -1,63 +1,31 @@
-import { ipcRenderer } from 'electron';
-import { sendPdf, responsePdf } from './events.js';
-import overrideDefaults from './renderer/overrides';
+import overrideDefaults from './lib/renderer-overrides';
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import './global.css';
-import { Section } from './elements/Section/index.js';
-import { SectionWrap } from './elements/Section/SectionWrap/index.js';
-import { DropZone } from './elements/DropZone/index';
-import { HelpTextWrap } from './elements/Section/HelpTextWrap/index';
-import { configureStore } from './store/configureStore';
-import { removeCv } from './store/actions/cv';
+import { DropZone } from './views/DropZone/DropZone';
+import { configureStore } from 'store/configureStore';
+import { listen, onDrop } from 'lib/ipc-events';
+import { App } from 'App';
 
 const store = configureStore();
 
 overrideDefaults();
+listen(store);
 
-ipcRenderer.on('asynchronous-reply', (event, arg) => {
-	if (arg.type && arg.payload && arg.type === responsePdf) {
-		store.dispatch(removeCv(arg.payload.path));
-	}
-});
-
-const onDrop = (path, name) => {
-	ipcRenderer.send('asynchronous-message', {
-		type: sendPdf,
-		payload: {
-			path,
-			name,
-		},
-	});
-};
-
-class App extends React.Component {
+class Root extends React.Component {
 	render() {
 		return (
 			<Provider store={store}>
-				<SectionWrap>
-					<Section center white grows>
-						<DropZone onDrop={onDrop} />
-					</Section>
-					<Section>
-						<HelpTextWrap title="About this tool">
-							This super cool tool lets you redact resumes to unbias your hiring
-							process.
-						</HelpTextWrap>
-					</Section>
-				</SectionWrap>
+				<App />
 			</Provider>
 		);
 	}
 }
 
-// Create your own root div in the body element before rendering into it
 let root = document.createElement('div');
 
-// Add id 'root' and append the div to body element
 root.id = 'root';
 document.body.appendChild(root);
 
-// Render the application into the DOM, the div inside index.html
-render(<App />, document.querySelector('x-app'));
+render(<Root />, document.querySelector('x-app'));
