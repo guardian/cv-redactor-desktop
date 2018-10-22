@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { onDrop } from './lib/ipc-events';
+import { onDrop } from './lib/ipcEvents';
 import { DropZone } from 'views/DropZone/DropZone';
 import { Resumes } from 'views/Resumes/Resumes';
 
