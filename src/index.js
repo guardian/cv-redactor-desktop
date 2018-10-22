@@ -10,6 +10,7 @@ import { SectionWrap } from './elements/Section/SectionWrap/index.js';
 import { DropZone } from './elements/DropZone/index';
 import { HelpTextWrap } from './elements/Section/HelpTextWrap/index';
 import { configureStore } from './store/configureStore';
+import { removeCv } from './store/actions/cv';
 
 const store = configureStore();
 
@@ -17,10 +18,7 @@ overrideDefaults();
 
 ipcRenderer.on('asynchronous-reply', (event, arg) => {
 	if (arg.type && arg.payload && arg.type === responsePdf) {
-		console.log({
-			payload: arg.payload,
-			data: arg.payload.data.toString(),
-		});
+		store.dispatch(removeCv(arg.payload.path));
 	}
 });
 
