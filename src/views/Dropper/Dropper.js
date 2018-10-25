@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { HelpTextWrap } from 'elements/Section/HelpTextWrap/index';
 import { Section } from 'elements/Section/index.js';
 import { SectionWrap } from 'elements/Section/SectionWrap/index.js';
+import { DropZone } from 'elements/DropZone/DropZone';
 
 export class Dropper extends Component {
 	render() {
