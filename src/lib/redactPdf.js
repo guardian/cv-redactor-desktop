@@ -2,6 +2,7 @@ var hummus = require('hummus');
 var path = require('path');
 var extractText = require('./parser/text-extraction');
 const fs = require('fs');
+const removeAccents = require('remove-accents');
 
 function pdfParser(file, redactedFile, termsToHide) {
 	const pdfReader = hummus.createReader(file);
@@ -15,10 +16,13 @@ function pdfParser(file, redactedFile, termsToHide) {
 	// 3. modify duplicate
 	// 4. save in redacted-pdfs
 
+	const wordCleaner = sentence => removeAccents(sentence.toLowerCase())
+
 	const findWords = page => {
 		return page.filter(block => {
-			let txt = block['text'].toLowerCase();
-			let matchArr = termsToHide.map(term => txt.includes(term));
+			let txt = wordCleaner(block['text'].toLowerCase());
+			let cleanTerms = termsToHide.map(term => wordCleaner(term));
+			let matchArr = cleanTerms.map(term => txt.includes(term));
 			return matchArr.includes(true);
 		});
 	};
