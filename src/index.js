@@ -2,8 +2,8 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { configureStore } from 'store/configureStore';
-import { listen, onDrop } from 'lib/ipc-events';
-import overrideDefaults from 'lib/renderer-overrides';
+import { listen, onDrop } from 'lib/ipcEvents';
+import overrideDefaults from 'lib/rendererOverrides';
 import { App } from 'App';
 import './global.css';
 
