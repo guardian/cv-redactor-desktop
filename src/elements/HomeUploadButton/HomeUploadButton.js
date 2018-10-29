@@ -5,9 +5,10 @@ import * as cvActions from 'store/actions/cv';
 import { Button } from 'elements/Button/index';
 import { HelpTextWrap } from 'elements/Section/HelpTextWrap/index';
 import { requestPdf } from 'lib/ipcEvents';
-import styles from './index.css';
 
-class PreDropZone extends Component {
+import styles from './HomeUploadButton.css';
+
+class PreHomeUploadButton extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -15,22 +16,11 @@ class PreDropZone extends Component {
 		};
 	}
 
-	pushResumes(resumes) {
-		resumes.forEach(resume => {
-			this.props.cvActions.addCv(resume);
-		});
-	}
-
 	onClick(ev) {
 		ev.preventDefault();
-		const files = requestPdf();
-		this.pushResumes(files);
-	}
-
-	onDrop(ev) {
-		ev.preventDefault();
-		this.onDragZoneChange(false);
-		this.pushResumes([...ev.dataTransfer.files].map(_ => _.path));
+		const files = requestPdf().forEach(resume => {
+			this.props.cvActions.addCv(resume);
+		});
 	}
 
 	onDragZoneChange(state) {
@@ -41,11 +31,7 @@ class PreDropZone extends Component {
 
 	render() {
 		return (
-			<div
-				className={styles.wrap}
-				onDrop={e => this.onDrop(e)}
-				onClick={e => this.onClick(e)}
-			>
+			<div className={styles.wrap} onClick={e => this.onClick(e)}>
 				<div className={styles.button}>
 					<div
 						data-drag-zone-active={this.state.dragZoneActive}
@@ -65,9 +51,9 @@ class PreDropZone extends Component {
 	}
 }
 
-export const DropZone = connect(
+export const HomeUploadButton = connect(
 	state => ({}),
 	dispatch => ({
 		cvActions: bindActionCreators(cvActions, dispatch),
 	})
-)(PreDropZone);
+)(PreHomeUploadButton);

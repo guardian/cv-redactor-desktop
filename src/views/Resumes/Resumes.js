@@ -7,6 +7,7 @@ import { SectionWrap } from 'elements/Section/SectionWrap';
 import { ListWrap } from 'elements/Section/ListWrap';
 import { ResumeWrap } from 'elements/ResumeWrap/index';
 import { Button } from 'elements/Button/index';
+import { DropTarget } from 'elements/DropTarget/DropTarget';
 import { requestPdf } from 'lib/ipcEvents';
 
 class PreResumes extends Component {
@@ -32,23 +33,25 @@ class PreResumes extends Component {
 	render() {
 		const { resumes } = this.props;
 		return (
-			<SectionWrap>
-				<Section center white grows>
-					<form onSubmit={e => this.onSubmit(e)}>
-						<ListWrap>
-							{resumes.map(resume => (
-								<ResumeWrap key={resume.path} path={resume.path} />
-							))}
-						</ListWrap>
+			<DropTarget>
+				<SectionWrap>
+					<Section center white grows>
+						<form onSubmit={e => this.onSubmit(e)}>
+							<ListWrap>
+								{resumes.map(resume => (
+									<ResumeWrap key={resume.path} path={resume.path} />
+								))}
+							</ListWrap>
 
-						<Button onClick={e => this.onAddAnother(e)}>Add another</Button>
-						<Button type="submit">Redact</Button>
-						<Button secondary onClick={e => this.onClear(e)}>
-							Clear all
-						</Button>
-					</form>
-				</Section>
-			</SectionWrap>
+							<Button onClick={e => this.onAddAnother(e)}>Add another</Button>
+							<Button type="submit">Redact</Button>
+							<Button secondary onClick={e => this.onClear(e)}>
+								Clear all
+							</Button>
+						</form>
+					</Section>
+				</SectionWrap>
+			</DropTarget>
 		);
 	}
 }
