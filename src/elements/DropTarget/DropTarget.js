@@ -8,9 +8,7 @@ import styles from './DropTarget.css';
 class PreDropTarget extends Component {
 	onDrop(ev) {
 		ev.preventDefault();
-		[...ev.dataTransfer.files].map(_ => _.path).forEach(resume => {
-			this.props.cvActions.addCv(resume);
-		});
+		this.props.cvActions.addCv([...ev.dataTransfer.files].map(_ => _.path));
 	}
 
 	render() {

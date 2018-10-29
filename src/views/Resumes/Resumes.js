@@ -25,9 +25,7 @@ class PreResumes extends Component {
 
 	onAddAnother(ev) {
 		ev.preventDefault();
-		requestPdf().forEach(resume => {
-			this.props.cvActions.addCv(resume);
-		});
+		this.props.cvActions.addCv(requestPdf());
 	}
 
 	render() {

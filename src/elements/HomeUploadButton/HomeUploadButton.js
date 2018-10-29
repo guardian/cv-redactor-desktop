@@ -18,9 +18,7 @@ class PreHomeUploadButton extends Component {
 
 	onClick(ev) {
 		ev.preventDefault();
-		const files = requestPdf().forEach(resume => {
-			this.props.cvActions.addCv(resume);
-		});
+		this.props.cvActions.addCv(requestPdf());
 	}
 
 	onDragZoneChange(state) {
