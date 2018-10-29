@@ -1,14 +1,16 @@
-import { ipcRenderer } from 'electron';
+import { ipcRenderer, remote } from 'electron';
 import { sendPdf, responsePdf } from 'events.js';
 import { removeCv } from 'store/actions/cv';
 
-const onDrop = (path, name) => {
-	ipcRenderer.send('asynchronous-message', {
-		type: sendPdf,
-		payload: {
-			path,
-			name,
-		},
+const onDrop = resumes => {
+	resumes.forEach(({ path, name }) => {
+		ipcRenderer.send('asynchronous-message', {
+			type: sendPdf,
+			payload: {
+				path,
+				name,
+			},
+		});
 	});
 };
 
@@ -20,4 +22,10 @@ const listen = store => {
 	});
 };
 
-export { onDrop, listen };
+const requestPdf = () =>
+	remote.dialog.showOpenDialog({
+		properties: ['openFile'],
+		filters: [{ name: 'PDF Files', extensions: ['pdf'] }],
+	}) || [];
+
+export { onDrop, listen, requestPdf };

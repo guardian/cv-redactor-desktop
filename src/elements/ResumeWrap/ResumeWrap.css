@@ -1,0 +1,37 @@
+@import '../../vars.css';
+
+.root {
+  padding: calc(var(--spacing)/1.5) 0;
+  display: flex;
+  align-items: center;
+}
+
+.root > .listRegion {
+  flex: 1 1 0;
+  overflow: hidden;
+  padding: 0 var(--spacing);
+}
+
+.root > .deleteRegion {
+  flex: 0 0 auto;
+  margin-right: var(--spacing);
+}
+
+.delete {
+  background: var(--bg) url(./delete.svg) no-repeat center center;
+  border-radius: 100%;
+  background-size: 50%;
+  width: 22.5px;
+  height: 22.5px;
+  padding: 0;
+  overflow: hidden;
+  appearance: none;
+}
+
+.delete span {
+  display: none;
+}
+
+.title {
+  font-weight: 400;
+}

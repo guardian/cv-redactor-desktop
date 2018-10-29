@@ -30,7 +30,10 @@ const reducer = (state = initialState.cv, action) => {
 	}
 };
 
-export const addCv = path => ({ type: ADD_CV, path: path });
+export const addCv = path =>
+	Array.isArray(path)
+		? path.map(p => ({ type: ADD_CV, path: p }))
+		: { type: ADD_CV, path: path };
 export const removeCv = path => ({ type: REMOVE_CV, path: path });
 export const editCvName = (path, name) => ({ type: EDIT_CV_NAME, path, name });
 export const clearCvs = () => ({ type: CLEAR_CV });

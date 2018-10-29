@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as cvActions from 'store/actions/cv';
-import { remote } from 'electron';
-import { Button } from 'elements/Button/index';
+import { Button } from 'elements/Button/Button';
 import { HelpTextWrap } from 'elements/Section/HelpTextWrap/index';
-import styles from './index.css';
+import { requestPdf } from 'lib/ipcEvents';
 
-class PreDropZone extends Component {
+import styles from './HomeUploadButton.css';
+
+class PreHomeUploadButton extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -15,25 +16,9 @@ class PreDropZone extends Component {
 		};
 	}
 
-	pushResumes(resumes) {
-		resumes.forEach(resume => {
-			this.props.cvActions.addCv(resume);
-		});
-	}
-
 	onClick(ev) {
 		ev.preventDefault();
-		const files = remote.dialog.showOpenDialog({
-			properties: ['openFile'],
-			filters: [{ name: 'PDF Files', extensions: ['pdf'] }],
-		});
-		this.pushResumes(files);
-	}
-
-	onDrop(ev) {
-		ev.preventDefault();
-		this.onDragZoneChange(false);
-		this.pushResumes([...ev.dataTransfer.files].map(_ => _.path));
+		this.props.cvActions.addCv(requestPdf());
 	}
 
 	onDragZoneChange(state) {
@@ -44,11 +29,7 @@ class PreDropZone extends Component {
 
 	render() {
 		return (
-			<div
-				className={styles.wrap}
-				onDrop={e => this.onDrop(e)}
-				onClick={e => this.onClick(e)}
-			>
+			<div className={styles.wrap} onClick={e => this.onClick(e)}>
 				<div className={styles.button}>
 					<div
 						data-drag-zone-active={this.state.dragZoneActive}
@@ -68,9 +49,9 @@ class PreDropZone extends Component {
 	}
 }
 
-export const DropZone = connect(
+export const HomeUploadButton = connect(
 	state => ({}),
 	dispatch => ({
 		cvActions: bindActionCreators(cvActions, dispatch),
 	})
-)(PreDropZone);
+)(PreHomeUploadButton);

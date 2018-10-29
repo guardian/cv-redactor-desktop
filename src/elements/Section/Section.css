@@ -1,7 +1,6 @@
 @import '../../vars.css';
 
 .root {
-  padding: var(--spacing);
   overflow: hidden;
   display: block;
   width: 100%;
@@ -21,4 +20,8 @@
 
 .white {
   background: #fff;
+}
+
+.withPadding {
+  padding: var(--spacing);
 }
