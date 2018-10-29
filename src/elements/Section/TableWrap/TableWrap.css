@@ -1,0 +1,5 @@
+@import '../../../vars.css';
+
+.root > * {
+  border-bottom: 1px solid var(--border);
+}

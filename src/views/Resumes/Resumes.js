@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as cvActions from 'store/actions/cv';
-import { Section } from 'elements/Section';
+import { Section } from 'elements/Section/Section';
 import { SectionWrap } from 'elements/Section/SectionWrap';
-import { ListWrap } from 'elements/Section/ListWrap';
+import { TableWrap } from 'elements/Section/TableWrap/TableWrap';
 import { ResumeWrap } from 'elements/ResumeWrap/ResumeWrap';
 import { Button } from 'elements/Button/index';
 import { DropTarget } from 'elements/DropTarget/DropTarget';
 import { requestPdf } from 'lib/ipcEvents';
+
+import styles from './Resumes.css';
 
 class PreResumes extends Component {
 	onSubmit(ev) {
@@ -16,11 +18,6 @@ class PreResumes extends Component {
 		if (this.props.resumes.length >= 1) {
 			this.props.onDrop(this.props.resumes[0].path, this.props.resumes[0].name);
 		}
-	}
-
-	onClear(ev) {
-		ev.preventDefault();
-		this.props.cvActions.clearCvs();
 	}
 
 	onAddAnother(ev) {
@@ -33,20 +30,24 @@ class PreResumes extends Component {
 		return (
 			<DropTarget>
 				<SectionWrap>
-					<Section center white grows>
+					<Section grows bleeds>
 						<form onSubmit={e => this.onSubmit(e)}>
-							<ListWrap>
+							<TableWrap className={styles.cvTable}>
 								{resumes.map(resume => (
 									<ResumeWrap key={resume.path} path={resume.path} />
 								))}
-							</ListWrap>
-
-							<Button onClick={e => this.onAddAnother(e)}>Add another</Button>
-							<Button type="submit">Redact</Button>
-							<Button secondary onClick={e => this.onClear(e)}>
-								Clear all
-							</Button>
+							</TableWrap>
+							<div className={styles.addAnother}>
+								<Button secondary onClick={e => this.onAddAnother(e)}>
+									Add another
+								</Button>
+							</div>
 						</form>
+					</Section>
+					<Section>
+						<Button type="submit">
+							Redact {resumes.length} {resumes.length === 1 ? 'CV' : 'CVs'}
+						</Button>
 					</Section>
 				</SectionWrap>
 			</DropTarget>

@@ -33,9 +33,9 @@ class PreResumeWrap extends Component {
 		const { path } = this.props;
 
 		return (
-			<div>
+			<div className={styles.root}>
 				<ListWrap>
-					<h1>📂 {fileName}</h1>
+					<InputWrap title="File name">{fileName}</InputWrap>
 					<InputWrap title="Candidate name">
 						<input
 							type="text"

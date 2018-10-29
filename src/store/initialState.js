@@ -1,3 +1,3 @@
 export default {
-	cv: [],
+	cv: [{ path: 'dsfsdf.dd' }],
 };
