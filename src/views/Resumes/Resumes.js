@@ -16,7 +16,8 @@ class PreResumes extends Component {
 	onSubmit(ev) {
 		ev.preventDefault();
 		if (this.props.resumes.length >= 1) {
-			this.props.onDrop(this.props.resumes[0].path, this.props.resumes[0].name);
+			this.props.onDrop(this.props.resumes);
+			console.log(this.props.resumes);
 		}
 	}
 
@@ -29,9 +30,9 @@ class PreResumes extends Component {
 		const { resumes } = this.props;
 		return (
 			<DropTarget>
-				<SectionWrap>
-					<Section grows bleeds>
-						<form onSubmit={e => this.onSubmit(e)}>
+				<form onSubmit={e => this.onSubmit(e)} style={{ height: '100%' }}>
+					<SectionWrap>
+						<Section grows bleeds>
 							<TableWrap className={styles.cvTable}>
 								{resumes.map(resume => (
 									<ResumeWrap key={resume.path} path={resume.path} />
@@ -42,14 +43,14 @@ class PreResumes extends Component {
 									Add another
 								</Button>
 							</div>
-						</form>
-					</Section>
-					<Section>
-						<Button type="submit">
-							Redact {resumes.length} {resumes.length === 1 ? 'CV' : 'CVs'}
-						</Button>
-					</Section>
-				</SectionWrap>
+						</Section>
+						<Section>
+							<Button type="submit">
+								Redact {resumes.length} {resumes.length === 1 ? 'CV' : 'CVs'}
+							</Button>
+						</Section>
+					</SectionWrap>
+				</form>
 			</DropTarget>
 		);
 	}

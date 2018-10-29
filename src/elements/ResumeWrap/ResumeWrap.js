@@ -34,8 +34,8 @@ class PreResumeWrap extends Component {
 
 		return (
 			<div className={styles.root}>
-				<ListWrap>
-					<InputWrap title="File name">{fileName}</InputWrap>
+				<ListWrap className={styles.listRegion}>
+					<h1 className={styles.title}>{fileName}</h1>
 					<InputWrap title="Candidate name">
 						<input
 							type="text"
@@ -45,15 +45,20 @@ class PreResumeWrap extends Component {
 							onChange={e => this.onChange(e)}
 						/>
 					</InputWrap>
-					<Button
-						secondary
+				</ListWrap>
+				<div className={styles.deleteRegion}>
+					<button
 						onClick={() => {
 							this.props.removeCv(path);
 						}}
+						className={styles.delete}
+						title="Remove"
+						alt="Remove"
+						type="button"
 					>
-						Remove from list
-					</Button>
-				</ListWrap>
+						<span>Remove</span>
+					</button>
+				</div>
 			</div>
 		);
 	}

@@ -4,7 +4,7 @@
   border: 1px solid var(--border);
   background: #fff;
   border-radius: 1px;
-  padding: .4em;
+  padding: .3em;
   display: block;
   width: 100%;
 }
@@ -19,4 +19,5 @@
   display: block;
   color: #666;
   font-size: .9em;
+  margin-bottom: .1rem;
 }

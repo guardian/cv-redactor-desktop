@@ -2,13 +2,16 @@ import { ipcRenderer, remote } from 'electron';
 import { sendPdf, responsePdf } from 'events.js';
 import { removeCv } from 'store/actions/cv';
 
-const onDrop = (path, name) => {
-	ipcRenderer.send('asynchronous-message', {
-		type: sendPdf,
-		payload: {
-			path,
-			name,
-		},
+const onDrop = resumes => {
+	debugger;
+	resumes.forEach(({ path, name }) => {
+		ipcRenderer.send('asynchronous-message', {
+			type: sendPdf,
+			payload: {
+				path,
+				name,
+			},
+		});
 	});
 };
 
