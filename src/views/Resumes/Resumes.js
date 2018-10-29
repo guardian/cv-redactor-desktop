@@ -27,6 +27,9 @@ class PreResumes extends Component {
 					<ResumeWrapList
 						onSubmit={e => this.onSubmit(e)}
 						onClear={e => this.onClear(e)}
+						onAddAnother={e => {
+							alert('ss');
+						}}
 						resumes={resumes}
 					/>
 				</Section>

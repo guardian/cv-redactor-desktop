@@ -1,12 +1,16 @@
 import { basename } from 'path';
 import React, { Component } from 'react';
-import styles from './index.css';
-import { InputWrap } from '../../InputWrap/index';
-import { ListWrap } from '../../Section/ListWrap';
-import { getRedactedFileName, getFileName } from '../../../lib/resume';
-import { HelpTextWrap } from '../../Section/HelpTextWrap/index';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-export class ResumeWrap extends Component {
+import styles from './index.css';
+import { InputWrap } from 'elements/InputWrap/index';
+import { ListWrap } from 'elements/Section/ListWrap';
+import { getRedactedFileName, getFileName } from 'lib/resume';
+import { HelpTextWrap } from 'elements/Section/HelpTextWrap/index';
+import { editCvName } from 'store/actions/cv';
+
+class PreResumeWrap extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -21,7 +25,7 @@ export class ResumeWrap extends Component {
 		this.setState({
 			name: ev.target.value,
 		});
-		this.props.onNameChange(ev.target.value);
+		this.props.editCvName(this.path, ev.target.value);
 	}
 
 	render() {
@@ -49,3 +53,10 @@ export class ResumeWrap extends Component {
 		);
 	}
 }
+
+export const ResumeWrap = connect(
+	state => ({}),
+	dispatch => ({
+		editCvName: bindActionCreators(editCvName, dispatch),
+	})
+)(PreResumeWrap);
