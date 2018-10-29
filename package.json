@@ -29,7 +29,8 @@
 		"redux": "^4.0.1",
 		"redux-devtools-extension": "^2.13.5",
 		"redux-multi": "^0.1.12",
-		"redux-thunk": "^2.3.0"
+		"redux-thunk": "^2.3.0",
+		"remove-accents": "^0.4.2"
 	},
 	"devDependencies": {
 		"babel-core": "^6.26.3",
