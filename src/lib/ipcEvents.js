@@ -3,7 +3,6 @@ import { sendPdf, responsePdf } from 'events.js';
 import { removeCv } from 'store/actions/cv';
 
 const onDrop = resumes => {
-	debugger;
 	resumes.forEach(({ path, name }) => {
 		ipcRenderer.send('asynchronous-message', {
 			type: sendPdf,
