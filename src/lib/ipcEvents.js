@@ -1,4 +1,4 @@
-import { ipcRenderer } from 'electron';
+import { ipcRenderer, remote } from 'electron';
 import { sendPdf, responsePdf } from 'events.js';
 import { removeCv } from 'store/actions/cv';
 
@@ -20,4 +20,10 @@ const listen = store => {
 	});
 };
 
-export { onDrop, listen };
+const requestPdf = () =>
+	remote.dialog.showOpenDialog({
+		properties: ['openFile'],
+		filters: [{ name: 'PDF Files', extensions: ['pdf'] }],
+	}) || [];
+
+export { onDrop, listen, requestPdf };

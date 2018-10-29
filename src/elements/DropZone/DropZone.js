@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as cvActions from 'store/actions/cv';
-import { remote } from 'electron';
 import { Button } from 'elements/Button/index';
 import { HelpTextWrap } from 'elements/Section/HelpTextWrap/index';
+import { requestPdf } from 'lib/ipcEvents';
 import styles from './index.css';
 
 class PreDropZone extends Component {
@@ -23,10 +23,7 @@ class PreDropZone extends Component {
 
 	onClick(ev) {
 		ev.preventDefault();
-		const files = remote.dialog.showOpenDialog({
-			properties: ['openFile'],
-			filters: [{ name: 'PDF Files', extensions: ['pdf'] }],
-		});
+		const files = requestPdf();
 		this.pushResumes(files);
 	}
 

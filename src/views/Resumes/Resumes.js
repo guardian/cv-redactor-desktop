@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as cvActions from 'store/actions/cv';
-import { Section } from 'elements/Section/index.js';
-import { SectionWrap } from 'elements/Section/SectionWrap/index.js';
-import { ResumeWrapList } from 'elements/ResumeWrapList';
+import { Section } from 'elements/Section';
+import { SectionWrap } from 'elements/Section/SectionWrap';
+import { ListWrap } from 'elements/Section/ListWrap';
+import { ResumeWrap } from 'elements/ResumeWrap/index';
+import { Button } from 'elements/Button/index';
+import { requestPdf } from 'lib/ipcEvents';
 
 class PreResumes extends Component {
 	onSubmit(ev) {
@@ -19,19 +22,31 @@ class PreResumes extends Component {
 		this.props.cvActions.clearCvs();
 	}
 
+	onAddAnother(ev) {
+		ev.preventDefault();
+		requestPdf().forEach(resume => {
+			this.props.cvActions.addCv(resume);
+		});
+	}
+
 	render() {
 		const { resumes } = this.props;
 		return (
 			<SectionWrap>
 				<Section center white grows>
-					<ResumeWrapList
-						onSubmit={e => this.onSubmit(e)}
-						onClear={e => this.onClear(e)}
-						onAddAnother={e => {
-							alert('ss');
-						}}
-						resumes={resumes}
-					/>
+					<form onSubmit={e => this.onSubmit(e)}>
+						<ListWrap>
+							{resumes.map(resume => (
+								<ResumeWrap key={resume.path} path={resume.path} />
+							))}
+						</ListWrap>
+
+						<Button onClick={e => this.onAddAnother(e)}>Add another</Button>
+						<Button type="submit">Redact</Button>
+						<Button secondary onClick={e => this.onClear(e)}>
+							Clear all
+						</Button>
+					</form>
 				</Section>
 			</SectionWrap>
 		);
