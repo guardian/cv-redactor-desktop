@@ -5,7 +5,7 @@ import * as cvActions from 'store/actions/cv';
 import { Section } from 'elements/Section';
 import { SectionWrap } from 'elements/Section/SectionWrap';
 import { ListWrap } from 'elements/Section/ListWrap';
-import { ResumeWrap } from 'elements/ResumeWrap/index';
+import { ResumeWrap } from 'elements/ResumeWrap/ResumeWrap';
 import { Button } from 'elements/Button/index';
 import { DropTarget } from 'elements/DropTarget/DropTarget';
 import { requestPdf } from 'lib/ipcEvents';
