@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as cvActions from 'store/actions/cv';
-import { Button } from 'elements/Button/index';
+import { Button } from 'elements/Button/Button';
 import { HelpTextWrap } from 'elements/Section/HelpTextWrap/index';
 import { requestPdf } from 'lib/ipcEvents';
 

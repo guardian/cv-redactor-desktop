@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import styles from './ResumeWrap.css';
 import { InputWrap } from 'elements/InputWrap/index';
 import { ListWrap } from 'elements/Section/ListWrap';
-import { Button } from 'elements/Button/index';
+import { Button } from 'elements/Button/Button';
 import { getRedactedFileName, getFileName } from 'lib/resume';
 import { editCvName, removeCv } from 'store/actions/cv';
 

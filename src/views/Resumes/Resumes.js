@@ -6,7 +6,7 @@ import { Section } from 'elements/Section/Section';
 import { SectionWrap } from 'elements/Section/SectionWrap';
 import { TableWrap } from 'elements/Section/TableWrap/TableWrap';
 import { ResumeWrap } from 'elements/ResumeWrap/ResumeWrap';
-import { Button } from 'elements/Button/index';
+import { Button } from 'elements/Button/Button';
 import { DropTarget } from 'elements/DropTarget/DropTarget';
 import { requestPdf } from 'lib/ipcEvents';
 
