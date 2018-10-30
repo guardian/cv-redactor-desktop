@@ -24,7 +24,7 @@ const listen = store => {
 
 const requestPdf = () =>
 	remote.dialog.showOpenDialog({
-		properties: ['openFile'],
+		properties: ['openFile', 'multiSelections'],
 		filters: [{ name: 'PDF Files', extensions: ['pdf'] }],
 	}) || [];
 

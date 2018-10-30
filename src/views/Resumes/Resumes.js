@@ -32,7 +32,7 @@ class PreResumes extends Component {
 			<DropTarget>
 				<form onSubmit={e => this.onSubmit(e)} style={{ height: '100%' }}>
 					<SectionWrap>
-						<Section grows bleeds>
+						<Section grows>
 							<TableWrap className={styles.cvTable}>
 								{resumes.map(resume => (
 									<ResumeWrap key={resume.path} path={resume.path} />
