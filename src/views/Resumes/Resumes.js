@@ -53,7 +53,7 @@ class PreResumes extends Component {
 							</div>
 						</Section>
 						<Section>
-							<Button type="submit">
+							<Button disabled={resumes.length < 1} type="submit">
 								Redact {resumes.length} {resumes.length === 1 ? 'CV' : 'CVs'}
 							</Button>
 						</Section>

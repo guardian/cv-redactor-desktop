@@ -20,6 +20,7 @@
 	"author": "GitHub",
 	"license": "CC0-1.0",
 	"dependencies": {
+		"convert-array-to-csv": "^1.0.4",
 		"electron": "^1.8.6",
 		"hummus": "^1.0.90",
 		"lodash": "^4.17.11",

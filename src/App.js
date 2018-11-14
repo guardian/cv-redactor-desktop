@@ -6,8 +6,7 @@ import { Resumes } from 'views/Resumes/Resumes';
 
 class PreApp extends Component {
 	render() {
-		const { resumes } = this.props;
-		return resumes.length === 0 ? <Dropper /> : <Resumes onDrop={onDrop} />;
+		return <Resumes onDrop={onDrop} />;
 	}
 }
 

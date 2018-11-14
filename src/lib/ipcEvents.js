@@ -1,17 +1,26 @@
-import { ipcRenderer, remote } from 'electron';
+import { ipcRenderer, remote, shell } from 'electron';
 import { sendPdf, responsePdf } from 'events.js';
 import { removeCv } from 'store/actions/cv';
+import { join } from 'path';
 
 const onDrop = resumes => {
-	resumes.forEach(({ path, name }) => {
+	const dir = remote.dialog.showOpenDialog({
+		title: 'Select an output folder',
+		properties: ['openDirectory', 'createDirectory', 'promptToCreate'],
+	})[0];
+
+	resumes.forEach(({ name, path, redactedFileName }) => {
 		ipcRenderer.send('asynchronous-message', {
 			type: sendPdf,
 			payload: {
-				path,
+				original: path,
+				target: join(dir, redactedFileName),
 				name,
 			},
 		});
 	});
+
+	shell.openItem(dir);
 };
 
 const listen = store => {

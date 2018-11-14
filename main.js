@@ -1,5 +1,4 @@
-const { app, BrowserWindow, ipcMain, shell } = require('electron');
-const { getRedactedFileName } = require('./src/lib/resume.js');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const { sendPdf, responsePdf } = require('./src/events.js');
 const {
 	default: installExtension,
@@ -132,18 +131,24 @@ const handleSinglePdf = (path, name) =>
 	});
 
 ipcMain.on('asynchronous-message', async (event, arg) => {
-	if (arg.type === sendPdf && arg.payload.path && arg.payload.name) {
-		const redactedFileName = getRedactedFileName(arg.payload.path);
-		pdfParser(arg.payload.path, redactedFileName, arg.payload.name.split(' '));
+	if (
+		arg.type === sendPdf &&
+		arg.payload.original &&
+		arg.payload.target &&
+		arg.payload.name
+	) {
+		pdfParser(
+			arg.payload.original,
+			arg.payload.target,
+			arg.payload.name.split(' ')
+		);
 
 		event.sender.send('asynchronous-reply', {
 			type: responsePdf,
 			payload: {
-				path: arg.payload.path,
+				path: arg.payload.original,
 			},
 		});
-
-		shell.openItem(redactedFileName);
 	} else {
 		console.log(arg);
 		throw 'no, bad, wrong';
