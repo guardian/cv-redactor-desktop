@@ -1,5 +1,10 @@
 @import '../../../vars.css';
 
-.root > * {
+.root {
+  border-radius: 2px;
+  border: 1px solid var(--border);
+}
+
+.root > *:not(:last-child) {
   border-bottom: 1px solid var(--border);
 }

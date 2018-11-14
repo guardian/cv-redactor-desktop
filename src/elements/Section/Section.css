@@ -1,27 +1,27 @@
 @import '../../vars.css';
 
 .root {
-  overflow: hidden;
-  display: block;
-  width: 100%;
-  &:not(:last-child) {
-    border-bottom: 1px solid var(--border);
-  }
-  & > * {
-    max-width: 100%;
-  }
+	overflow: hidden;
+	display: block;
+	width: 100%;
+	&:not(:last-child) {
+		border-bottom: 1px solid var(--border);
+	}
+	& > * {
+		max-width: 100%;
+	}
 }
 
 .center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .white {
-  background: #fff;
+	background: #fff;
 }
 
 .withPadding {
-  padding: var(--spacing);
+	padding: var(--spacing);
 }

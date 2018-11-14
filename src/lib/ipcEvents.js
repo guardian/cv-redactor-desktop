@@ -1,17 +1,34 @@
-import { ipcRenderer, remote } from 'electron';
-import { sendPdf, responsePdf } from 'events.js';
+import { ipcRenderer, remote, shell } from 'electron';
+import { sendPdf, responsePdf, sendManifest } from 'events.js';
 import { removeCv } from 'store/actions/cv';
+import { join } from 'path';
 
 const onDrop = resumes => {
-	resumes.forEach(({ path, name }) => {
+	const target = remote.dialog.showOpenDialog({
+		title: 'Select an output folder',
+		properties: ['openDirectory', 'createDirectory', 'promptToCreate'],
+	})[0];
+
+	ipcRenderer.send('asynchronous-message', {
+		type: sendManifest,
+		payload: {
+			path: target,
+			manifest: resumes,
+		},
+	});
+
+	resumes.forEach(({ name, path, redactedFileName }) => {
 		ipcRenderer.send('asynchronous-message', {
 			type: sendPdf,
 			payload: {
-				path,
+				original: path,
+				target: join(target, redactedFileName),
 				name,
 			},
 		});
 	});
+
+	shell.openItem(target);
 };
 
 const listen = store => {
@@ -24,7 +41,7 @@ const listen = store => {
 
 const requestPdf = () =>
 	remote.dialog.showOpenDialog({
-		properties: ['openFile'],
+		properties: ['openFile', 'multiSelections'],
 		filters: [{ name: 'PDF Files', extensions: ['pdf'] }],
 	}) || [];
 

@@ -6,7 +6,6 @@ import { bindActionCreators } from 'redux';
 import styles from './ResumeWrap.css';
 import { InputWrap } from 'elements/InputWrap/index';
 import { ListWrap } from 'elements/Section/ListWrap';
-import { Button } from 'elements/Button/Button';
 import { getRedactedFileName, getFileName } from 'lib/resume';
 import { editCvName, removeCv } from 'store/actions/cv';
 
@@ -16,7 +15,6 @@ class PreResumeWrap extends Component {
 		this.state = {
 			name: '',
 			fileName: getFileName(props.path),
-			redactedFileName: getRedactedFileName(props.path),
 		};
 	}
 
@@ -29,13 +27,18 @@ class PreResumeWrap extends Component {
 	}
 
 	render() {
-		const { fileName, name, redactedFileName } = this.state;
-		const { path } = this.props;
+		const { fileName, name } = this.state;
+		const { path, redactedFileName } = this.props;
 
 		return (
 			<div className={styles.root}>
 				<ListWrap className={styles.listRegion}>
-					<h1 className={styles.title}>{fileName}</h1>
+					<InputWrap title="Original filename">
+						<h1 className={styles.title}>{fileName}</h1>
+					</InputWrap>
+					<InputWrap title="Redacted filename">
+						<h1 className={styles.title}>{redactedFileName}</h1>
+					</InputWrap>
 					<InputWrap title="Candidate name">
 						<input
 							type="text"
@@ -65,7 +68,9 @@ class PreResumeWrap extends Component {
 }
 
 export const ResumeWrap = connect(
-	state => ({}),
+	state => ({
+		position: state.position,
+	}),
 	dispatch => ({
 		editCvName: bindActionCreators(editCvName, dispatch),
 		removeCv: bindActionCreators(removeCv, dispatch),

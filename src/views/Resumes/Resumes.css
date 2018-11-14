@@ -1,5 +1,5 @@
 .addAnother {
-  margin: var(--spacing);
+  margin-top: var(--spacing);
 }
 
 .cvTable {
