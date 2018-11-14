@@ -15,7 +15,6 @@ class PreResumeWrap extends Component {
 		this.state = {
 			name: '',
 			fileName: getFileName(props.path),
-			redactedFileName: getRedactedFileName(props.path),
 		};
 	}
 
@@ -28,8 +27,8 @@ class PreResumeWrap extends Component {
 	}
 
 	render() {
-		const { fileName, name, redactedFileName } = this.state;
-		const { path } = this.props;
+		const { fileName, name } = this.state;
+		const { path, redactedFileName } = this.props;
 
 		return (
 			<div className={styles.root}>
@@ -69,7 +68,9 @@ class PreResumeWrap extends Component {
 }
 
 export const ResumeWrap = connect(
-	state => ({}),
+	state => ({
+		position: state.position,
+	}),
 	dispatch => ({
 		editCvName: bindActionCreators(editCvName, dispatch),
 		removeCv: bindActionCreators(removeCv, dispatch),

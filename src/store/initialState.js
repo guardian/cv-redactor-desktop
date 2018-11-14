@@ -1,3 +1,4 @@
 export default {
 	cv: [],
+	position: '',
 };

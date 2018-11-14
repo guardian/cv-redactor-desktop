@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as cvActions from 'store/actions/cv';
+import { updatePosition } from 'store/actions/position';
 import { Section } from 'elements/Section/Section';
 import { SectionWrap } from 'elements/Section/SectionWrap';
 import { TableWrap } from 'elements/Section/TableWrap/TableWrap';
@@ -27,27 +28,35 @@ class PreResumes extends Component {
 		this.props.cvActions.addCv(requestPdf());
 	}
 
+	onChangePosition(ev) {
+		this.props.updatePosition(ev.target.value);
+	}
+
 	render() {
-		const { resumes } = this.props;
+		const { resumes, position } = this.props;
 		return (
 			<DropTarget>
 				<form onSubmit={e => this.onSubmit(e)} style={{ height: '100%' }}>
 					<SectionWrap>
-						<Section white grows>
+						<Section white>
 							<InputWrap title="Position">
 								<input
 									type="text"
-									value={name}
+									value={position}
 									name="position"
 									required
-									onChange={e => this.onChange(e)}
+									onChange={e => this.onChangePosition(e)}
 								/>
 							</InputWrap>
 						</Section>
 						<Section white grows>
 							<TableWrap className={styles.cvTable}>
 								{resumes.map(resume => (
-									<ResumeWrap key={resume.path} path={resume.path} />
+									<ResumeWrap
+										key={resume.path}
+										path={resume.path}
+										redactedFileName={resume.redactedFileName}
+									/>
 								))}
 							</TableWrap>
 							<div className={styles.addAnother}>
@@ -71,8 +80,10 @@ class PreResumes extends Component {
 export const Resumes = connect(
 	state => ({
 		resumes: state.cv,
+		position: state.position,
 	}),
 	dispatch => ({
 		cvActions: bindActionCreators(cvActions, dispatch),
+		updatePosition: bindActionCreators(updatePosition, dispatch),
 	})
 )(PreResumes);
