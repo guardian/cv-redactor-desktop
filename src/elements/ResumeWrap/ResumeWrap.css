@@ -1,7 +1,7 @@
 @import '../../vars.css';
 
 .root {
-	padding: calc(var(--spacing) * 0.75) 0;
+	padding: calc(var(--spacing) * 0.5) 0;
 	display: flex;
 	align-items: center;
 }
@@ -15,14 +15,10 @@
 .fileRegion {
 	overflow: hidden;
 }
+
 .deleteRegion {
 	flex: 0 0 auto;
 	margin-right: var(--spacing);
-	height: var(--height);
-	box-sizing: border-box;
-	align-self: flex-end;
-	display: flex;
-	align-items: center;
 }
 
 .delete {
@@ -32,6 +28,7 @@
 	width: 22.5px;
 	height: 22.5px;
 	padding: 0;
+	display: block;
 	appearance: none;
 }
 

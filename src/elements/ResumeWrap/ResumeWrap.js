@@ -32,19 +32,20 @@ class PreResumeWrap extends Component {
 		return (
 			<div className={styles.root}>
 				<div className={styles.fileRegion}>
-					<InputWrap title="File">
-						<h1
+					<InputWrap>
+						<strong
 							title={`will become ${redactedFileName}`}
 							className={styles.title}
 						>
 							{getFileName(path)}
-						</h1>
+						</strong>
 					</InputWrap>
 				</div>
 				<div className={styles.editRegion}>
-					<InputWrap title="Candidate name">
+					<InputWrap>
 						<input
 							type="text"
+							placeholder="Candidate name"
 							value={name}
 							name="candidate-name"
 							required

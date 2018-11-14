@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { updatePosition } from 'store/actions/position';
 import { InputWrap } from 'elements/InputWrap/index';
+import { HelpTextWrap } from 'elements/Section/HelpTextWrap/index';
+import { ListWrap } from 'elements/Section/ListWrap';
 
 class PrePositionField extends Component {
 	onChangePosition(ev) {
@@ -12,15 +14,21 @@ class PrePositionField extends Component {
 	render() {
 		const { position } = this.props;
 		return (
-			<InputWrap title="Position">
-				<input
-					type="text"
-					value={position}
-					name="position"
-					required
-					onChange={e => this.onChangePosition(e)}
-				/>
-			</InputWrap>
+			<ListWrap>
+				<InputWrap title="Prefix">
+					<input
+						type="text"
+						value={position}
+						name="position"
+						required
+						onChange={e => this.onChangePosition(e)}
+					/>
+				</InputWrap>
+				<HelpTextWrap>
+					Redacted CV's will be named {position}
+					.id.pdf
+				</HelpTextWrap>
+			</ListWrap>
 		);
 	}
 }

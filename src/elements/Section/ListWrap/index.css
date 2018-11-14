@@ -1,5 +1,5 @@
 @import '../../../vars.css';
 
-.root > * {
-  margin-bottom: calc(var(--spacing)/3);
+.root > *:not(:last-child) {
+	margin-bottom: calc(var(--spacing) / 3);
 }
