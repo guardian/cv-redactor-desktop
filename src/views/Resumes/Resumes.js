@@ -34,6 +34,12 @@ class PreResumes extends Component {
 			<DropTarget>
 				<form onSubmit={e => this.onSubmit(e)} style={{ height: '100%' }}>
 					<SectionWrap>
+						<Section className={styles.footer}>
+							<Button secondary onClick={e => this.onAddAnother(e)}>
+								Add files
+							</Button>
+							<Button disabled={resumes.length < 1} type="submit">
+								Redact {resumes.length} {resumes.length === 1 ? 'CV' : 'CVs'}
 						<Section bleeds white grows>
 							{resumes.length > 0 ? (
 								<TableWrap className={styles.cvTable}>
@@ -51,14 +57,6 @@ class PreResumes extends Component {
 						</Section>
 						<Section>
 							<PositionField />
-						</Section>
-						<Section className={styles.footer}>
-							<Button secondary onClick={e => this.onAddAnother(e)}>
-								Add files
-							</Button>
-							<Button disabled={resumes.length < 1} type="submit">
-								Redact {resumes.length} {resumes.length === 1 ? 'CV' : 'CVs'}
-							</Button>
 						</Section>
 					</SectionWrap>
 				</form>
