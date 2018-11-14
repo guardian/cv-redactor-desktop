@@ -1,14 +1,15 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
-const { sendPdf, responsePdf } = require('./src/events.js');
+const { sendPdf, responsePdf, sendManifest } = require('./src/events.js');
 const {
 	default: installExtension,
 	REACT_DEVELOPER_TOOLS,
 	REDUX_DEVTOOLS,
 } = require('electron-devtools-installer');
-const path = require('path');
+const { join } = require('path');
 const url = require('url');
-const fs = require('fs');
+const { writeFileSync } = require('fs');
 const pdfParser = require('./src/lib/redactPdf');
+const { convertArrayToCSV } = require('convert-array-to-csv');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -58,7 +59,7 @@ function createWindow() {
 	} else {
 		indexPath = url.format({
 			protocol: 'file:',
-			pathname: path.join(__dirname, 'dist', 'index.html'),
+			pathname: join(__dirname, 'dist', 'index.html'),
 			slashes: true,
 		});
 	}
@@ -113,25 +114,13 @@ app.on('activate', () => {
 	}
 });
 
-const saveRedactedPdf = (path, contents) =>
-	new Promise(yay => {
-		fs.writeFile(path, contents, (error, data) => {
-			if (error) throw error;
-			yay(path);
-		});
-	});
-
-const handleSinglePdf = (path, name) =>
-	new Promise(yay => {
-		fs.readFile(path, function(error, data) {
-			if (error) throw error;
-			/* data is the pdf */
-			yay(Buffer.from(`candidate name: ${name}`, 'utf8'));
-		});
-	});
-
 ipcMain.on('asynchronous-message', async (event, arg) => {
-	if (
+	if (arg.type === sendManifest && arg.payload.path && arg.payload.manifest) {
+		writeFileSync(
+			join(arg.payload.path, 'manifest.csv'),
+			convertArrayToCSV(arg.payload.manifest)
+		);
+	} else if (
 		arg.type === sendPdf &&
 		arg.payload.original &&
 		arg.payload.target &&
