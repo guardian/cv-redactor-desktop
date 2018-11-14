@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as cvActions from 'store/actions/cv';
-import { updatePosition } from 'store/actions/position';
 import { Section } from 'elements/Section/Section';
 import { SectionWrap } from 'elements/Section/SectionWrap';
 import { TableWrap } from 'elements/Section/TableWrap/TableWrap';
 import { ResumeWrap } from 'elements/ResumeWrap/ResumeWrap';
 import { Button } from 'elements/Button/Button';
 import { DropTarget } from 'elements/DropTarget/DropTarget';
+import { PositionField } from 'elements/PositionField/PositionField';
 import { requestPdf } from 'lib/ipcEvents';
-import { InputWrap } from 'elements/InputWrap/index';
 
 import styles from './Resumes.css';
 
@@ -28,26 +27,14 @@ class PreResumes extends Component {
 		this.props.cvActions.addCv(requestPdf());
 	}
 
-	onChangePosition(ev) {
-		this.props.updatePosition(ev.target.value);
-	}
-
 	render() {
-		const { resumes, position } = this.props;
+		const { resumes } = this.props;
 		return (
 			<DropTarget>
 				<form onSubmit={e => this.onSubmit(e)} style={{ height: '100%' }}>
 					<SectionWrap>
-						<Section white>
-							<InputWrap title="Position">
-								<input
-									type="text"
-									value={position}
-									name="position"
-									required
-									onChange={e => this.onChangePosition(e)}
-								/>
-							</InputWrap>
+						<Section>
+							<PositionField />
 						</Section>
 						<Section white grows>
 							<TableWrap className={styles.cvTable}>
@@ -80,10 +67,8 @@ class PreResumes extends Component {
 export const Resumes = connect(
 	state => ({
 		resumes: state.cv,
-		position: state.position,
 	}),
 	dispatch => ({
 		cvActions: bindActionCreators(cvActions, dispatch),
-		updatePosition: bindActionCreators(updatePosition, dispatch),
 	})
 )(PreResumes);
