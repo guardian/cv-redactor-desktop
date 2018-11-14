@@ -19,3 +19,12 @@
 	right: 0;
 	bottom: 0;
 }
+
+.empty {
+	margin: auto;
+	padding: var(--spacing);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}

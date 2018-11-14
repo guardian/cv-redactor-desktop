@@ -37,9 +37,7 @@ function createWindow() {
 	// Create the browser window.
 	mainWindow = new BrowserWindow({
 		minWidth: 400,
-		maxWidth: 800,
 		minHeight: 300,
-		maximizable: false,
 		backgroundColor: '#ffffff',
 		titleBarStyle: process.platform === 'darwin' ? 'hidden' : null,
 		width: 600,

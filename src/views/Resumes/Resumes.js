@@ -36,7 +36,7 @@ class PreResumes extends Component {
 					<SectionWrap>
 						<Section dark className={styles.footer}>
 							<Button inverted onClick={e => this.onAddAnother(e)}>
-								Add files
+								{resumes.length ? 'Add more…' : 'Browse files…'}
 							</Button>
 							{resumes.length ? (
 								<Button type="submit">
@@ -58,7 +58,9 @@ class PreResumes extends Component {
 									))}
 								</TableWrap>
 							) : (
-								<HomeUploadButton />
+								<div className={styles.empty}>
+									<HomeUploadButton />
+								</div>
 							)}
 						</Section>
 						<Section>
