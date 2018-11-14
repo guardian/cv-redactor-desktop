@@ -6,7 +6,6 @@ import { bindActionCreators } from 'redux';
 import styles from './ResumeWrap.css';
 import { InputWrap } from 'elements/InputWrap/index';
 import { ListWrap } from 'elements/Section/ListWrap';
-import { Button } from 'elements/Button/Button';
 import { getRedactedFileName, getFileName } from 'lib/resume';
 import { editCvName, removeCv } from 'store/actions/cv';
 
@@ -35,7 +34,12 @@ class PreResumeWrap extends Component {
 		return (
 			<div className={styles.root}>
 				<ListWrap className={styles.listRegion}>
-					<h1 className={styles.title}>{fileName}</h1>
+					<InputWrap title="Original filename">
+						<h1 className={styles.title}>{fileName}</h1>
+					</InputWrap>
+					<InputWrap title="Redacted filename">
+						<h1 className={styles.title}>{redactedFileName}</h1>
+					</InputWrap>
 					<InputWrap title="Candidate name">
 						<input
 							type="text"
