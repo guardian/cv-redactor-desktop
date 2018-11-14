@@ -23,5 +23,5 @@
 }
 
 .withPadding {
-	padding: var(--spacing);
+	padding: calc(var(--spacing) * 0.75) var(--spacing);
 }

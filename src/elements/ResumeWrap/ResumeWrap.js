@@ -14,7 +14,6 @@ class PreResumeWrap extends Component {
 		super(props);
 		this.state = {
 			name: '',
-			fileName: getFileName(props.path),
 		};
 	}
 
@@ -27,18 +26,22 @@ class PreResumeWrap extends Component {
 	}
 
 	render() {
-		const { fileName, name } = this.state;
+		const { name } = this.state;
 		const { path, redactedFileName } = this.props;
 
 		return (
 			<div className={styles.root}>
-				<ListWrap className={styles.listRegion}>
-					<InputWrap title="Original filename">
-						<h1 className={styles.title}>{fileName}</h1>
+				<div className={styles.fileRegion}>
+					<InputWrap title="File">
+						<h1
+							title={`will become ${redactedFileName}`}
+							className={styles.title}
+						>
+							{getFileName(path)}
+						</h1>
 					</InputWrap>
-					<InputWrap title="Redacted filename">
-						<h1 className={styles.title}>{redactedFileName}</h1>
-					</InputWrap>
+				</div>
+				<div className={styles.editRegion}>
 					<InputWrap title="Candidate name">
 						<input
 							type="text"
@@ -48,12 +51,13 @@ class PreResumeWrap extends Component {
 							onChange={e => this.onChange(e)}
 						/>
 					</InputWrap>
-				</ListWrap>
+				</div>
 				<div className={styles.deleteRegion}>
 					<button
 						onClick={() => {
 							this.props.removeCv(path);
 						}}
+						tabIndex={-1}
 						className={styles.delete}
 						title="Remove"
 						alt="Remove"

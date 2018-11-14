@@ -1,23 +1,31 @@
 @import '../../vars.css';
 
 .root input {
-  border: 1px solid var(--border);
-  background: #fff;
-  border-radius: 1px;
-  padding: .3em;
-  display: block;
-  width: 100%;
+	border: 1px solid var(--border);
+	background: #fff;
+	border-radius: 3px;
+	padding: 0 calc(var(--spacing) / 2);
+	height: var(--height);
+	display: block;
+	width: 100%;
+}
+
+.content {
+	height: var(--height);
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: stretch;
 }
 
 .root input:focus {
-  outline: none;
-  border-color: var(--bright);
-  box-shadow: 0 0 0 1px var(--bright);
+	outline: none;
+	border-color: var(--bright);
 }
 
 .label {
-  display: block;
-  color: #666;
-  font-size: .9em;
-  margin-bottom: .1rem;
+	display: block;
+	color: #666;
+	font-size: 0.9em;
+	font-weight: 400;
 }

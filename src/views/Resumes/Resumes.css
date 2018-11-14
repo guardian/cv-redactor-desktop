@@ -1,7 +1,13 @@
 .addAnother {
-  margin-top: var(--spacing);
+	margin: var(--spacing);
 }
 
-.cvTable {
-  background: #fff;
+.footer {
+	display: flex;
+	align-content: center;
+	justify-content: space-between;
+}
+
+.footer button {
+	width: auto;
 }
