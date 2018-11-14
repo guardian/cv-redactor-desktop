@@ -1,0 +1,14 @@
+@import '../../../vars.css';
+
+.root {
+	flex: 0 0 auto;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+	background-color: var(--bg-inverted);
+	background-image: linear-gradient(
+		to bottom,
+		rgba(255, 255, 255, 0.1) 0%,
+		rgba(255, 255, 255, 0) 99%
+	);
+	-webkit-app-region: drag;
+	-webkit-user-select: none;
+}

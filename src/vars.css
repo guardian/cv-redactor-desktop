@@ -4,6 +4,8 @@
 	--bg: hsla(0, 0%, 0%, 0.03);
 	--border: hsla(0, 0%, 0%, 0.125);
 	--border-darker: hsla(0, 0%, 0%, 0.2);
+	--bg-inverted: hsla(0, 0%, 12.5%, 1);
+	--border-inverted: hsla(0, 0%, 100%, 0.25);
 	--bright: #00b2ff;
 	--bright-darker: #0094ff;
 	--bright-darkerer: #007dd6;

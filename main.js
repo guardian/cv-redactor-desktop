@@ -40,6 +40,8 @@ function createWindow() {
 		maxWidth: 800,
 		minHeight: 300,
 		maximizable: false,
+		backgroundColor: '#ffffff',
+		titleBarStyle: process.platform === 'darwin' ? 'hidden' : null,
 		width: 600,
 		height: 400,
 		show: false,

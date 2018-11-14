@@ -32,14 +32,20 @@ class PreResumes extends Component {
 		const { resumes } = this.props;
 		return (
 			<DropTarget>
-				<form onSubmit={e => this.onSubmit(e)} style={{ height: '100%' }}>
+				<form onSubmit={e => this.onSubmit(e)} className={styles.root}>
 					<SectionWrap>
-						<Section className={styles.footer}>
-							<Button secondary onClick={e => this.onAddAnother(e)}>
+						<Section dark className={styles.footer}>
+							<Button inverted onClick={e => this.onAddAnother(e)}>
 								Add files
 							</Button>
-							<Button disabled={resumes.length < 1} type="submit">
-								Redact {resumes.length} {resumes.length === 1 ? 'CV' : 'CVs'}
+							{resumes.length ? (
+								<Button type="submit">
+									Redact {resumes.length} {resumes.length === 1 ? 'CV' : 'CVs'}
+								</Button>
+							) : (
+								<div />
+							)}
+						</Section>
 						<Section bleeds white grows>
 							{resumes.length > 0 ? (
 								<TableWrap className={styles.cvTable}>

@@ -6,6 +6,7 @@ export const Section = ({
 	center,
 	white,
 	grows,
+	dark,
 	bleeds,
 	className,
 }) => (
@@ -17,6 +18,7 @@ export const Section = ({
 			center ? styles.center : '',
 			!bleeds ? styles.withPadding : '',
 			white ? styles.white : '',
+			dark ? styles.dark : '',
 		].join(' ')}
 	>
 		{children}
