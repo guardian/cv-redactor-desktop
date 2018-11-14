@@ -5,6 +5,7 @@ import { updatePosition } from 'store/actions/position';
 import { InputWrap } from 'elements/InputWrap/index';
 import { HelpTextWrap } from 'elements/Section/HelpTextWrap/index';
 import { ListWrap } from 'elements/Section/ListWrap';
+import { getRedactedFileName } from 'lib/resume';
 
 class PrePositionField extends Component {
 	onChangePosition(ev) {
@@ -25,8 +26,7 @@ class PrePositionField extends Component {
 					/>
 				</InputWrap>
 				<HelpTextWrap>
-					Redacted CV's will be named {position}
-					.id.pdf
+					Redacted CV's will be named {getRedactedFileName(position, 'id')}
 				</HelpTextWrap>
 			</ListWrap>
 		);

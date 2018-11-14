@@ -6,6 +6,11 @@
 	align-items: center;
 }
 
+.root:focus {
+	outline: none;
+	background: var(--bg);
+}
+
 .fileRegion,
 .editRegion {
 	flex: 1 1 0;

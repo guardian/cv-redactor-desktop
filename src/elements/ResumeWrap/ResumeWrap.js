@@ -1,17 +1,17 @@
-import { basename } from 'path';
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
+import { remote, shell } from 'electron';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import styles from './ResumeWrap.css';
 import { InputWrap } from 'elements/InputWrap/index';
-import { ListWrap } from 'elements/Section/ListWrap';
-import { getRedactedFileName, getFileName } from 'lib/resume';
+import { getFileName } from 'lib/resume';
 import { editCvName, removeCv } from 'store/actions/cv';
 
 class PreResumeWrap extends Component {
 	constructor(props) {
 		super(props);
+		this.$ref = createRef();
 		this.state = {
 			name: '',
 		};
@@ -25,12 +25,48 @@ class PreResumeWrap extends Component {
 		this.props.editCvName(this.props.path, ev.target.value);
 	}
 
+	onKeyDown(ev) {
+		if (ev.target === this.$ref.current) {
+			if (ev.key === 'Backspace') {
+				this.props.removeCv(this.props.path);
+			}
+		}
+	}
+
+	onContextMenu() {
+		const { Menu, MenuItem } = remote;
+		const menu = new Menu();
+		menu.append(
+			new MenuItem({
+				label: 'Remove',
+				click: () => {
+					this.props.removeCv(this.props.path);
+				},
+			})
+		);
+
+		menu.popup({ window: remote.getCurrentWindow() });
+	}
+
 	render() {
 		const { name } = this.state;
 		const { path, redactedFileName } = this.props;
 
 		return (
-			<div className={styles.root}>
+			<div
+				className={styles.root}
+				tabIndex={-1}
+				ref={this.$ref}
+				onKeyDown={ev => {
+					this.onKeyDown(ev);
+				}}
+				onDoubleClick={() => {
+					shell.openItem(path);
+				}}
+				onContextMenu={() => {
+					this.onContextMenu();
+				}}
+			>
 				<div className={styles.fileRegion}>
 					<InputWrap>
 						<strong

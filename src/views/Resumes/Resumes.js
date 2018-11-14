@@ -54,7 +54,7 @@ class PreResumes extends Component {
 						</Section>
 						<Section className={styles.footer}>
 							<Button secondary onClick={e => this.onAddAnother(e)}>
-								Add resumes
+								Add files
 							</Button>
 							<Button disabled={resumes.length < 1} type="submit">
 								Redact {resumes.length} {resumes.length === 1 ? 'CV' : 'CVs'}
