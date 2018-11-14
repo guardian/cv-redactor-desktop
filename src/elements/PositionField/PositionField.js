@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { updatePosition } from 'store/actions/position';
 import { InputWrap } from 'elements/InputWrap/index';
-import { HelpTextWrap } from 'elements/Section/HelpTextWrap/index';
+import { HelpTextWrap } from 'elements/Section/HelpTextWrap/HelpTextWrap';
 import { ListWrap } from 'elements/Section/ListWrap';
 import { getRedactedFileName } from 'lib/resume';
 

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { HelpTextWrap } from 'elements/Section/HelpTextWrap/index';
+import { HelpTextWrap } from 'elements/Section/HelpTextWrap/HelpTextWrap';
 import { Section } from 'elements/Section/Section';
 import { SectionWrap } from 'elements/Section/SectionWrap/index.js';
-import { HomeUploadButton } from 'elements/HomeUploadButton/HomeUploadButton';
+import { HomeDndPrompt } from 'elements/HomeDndPrompt/HomeDndPrompt';
 import { DropTarget } from '../../elements/DropTarget/DropTarget';
 import { PositionField } from 'elements/PositionField/PositionField';
 
@@ -15,7 +15,7 @@ export class Dropper extends Component {
 						<PositionField />
 					</Section>
 					<Section center white grows>
-						<HomeUploadButton />
+						<HomeDndPrompt />
 					</Section>
 					<Section white>
 						<HelpTextWrap title="About this tool">

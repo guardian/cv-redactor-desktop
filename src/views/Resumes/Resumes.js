@@ -10,7 +10,7 @@ import { Button } from 'elements/Button/Button';
 import { DropTarget } from 'elements/DropTarget/DropTarget';
 import { PositionField } from 'elements/PositionField/PositionField';
 import { requestPdf } from 'lib/ipcEvents';
-import { HomeUploadButton } from 'elements/HomeUploadButton/HomeUploadButton';
+import { HomeDndPrompt } from 'elements/HomeDndPrompt/HomeDndPrompt';
 
 import styles from './Resumes.css';
 
@@ -59,7 +59,7 @@ class PreResumes extends Component {
 								</TableWrap>
 							) : (
 								<div className={styles.empty}>
-									<HomeUploadButton />
+									<HomeDndPrompt />
 								</div>
 							)}
 						</Section>
