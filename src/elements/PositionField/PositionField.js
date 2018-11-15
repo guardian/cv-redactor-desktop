@@ -16,7 +16,7 @@ class PrePositionField extends Component {
 		const { position } = this.props;
 		return (
 			<ListWrap>
-				<InputWrap title="Prefix">
+				<InputWrap title="Job title">
 					<input
 						type="text"
 						value={position}
