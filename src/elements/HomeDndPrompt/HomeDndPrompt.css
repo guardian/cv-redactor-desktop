@@ -1,0 +1,27 @@
+@import '../../vars.css';
+
+.wrap {
+	outline: none;
+	display: flex;
+	align-items: center;
+}
+
+.icon {
+	margin-right: var(--spacing);
+	flex: 0 0 auto;
+	display: block;
+	border-radius: 100%;
+	height: 5em;
+	width: 5em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--bg) url(./resume.svg) no-repeat center center;
+	background-size: 34%;
+	transition: 0.05s;
+}
+
+.icon[data-drag-zone-active='true'] {
+	background-color: #fff;
+	box-shadow: 0 0 0 4px var(--bright);
+}

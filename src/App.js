@@ -1,12 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { onDrop } from './lib/ipcEvents';
-import { Dropper } from 'views/Dropper/Dropper';
+import { MacTitleBar } from 'elements/Section/MacTitleBar/MacTitleBar';
 import { Resumes } from 'views/Resumes/Resumes';
+import { remote } from 'electron';
 
 class PreApp extends Component {
 	render() {
-		return <Resumes onDrop={onDrop} />;
+		return (
+			<div className="flex">
+				{remote.process.platform === 'darwin' && <MacTitleBar />}
+				<div className="flex-fill">
+					<Resumes onDrop={onDrop} />
+				</div>
+			</div>
+		);
 	}
 }
 

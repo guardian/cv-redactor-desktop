@@ -1,44 +1,56 @@
 @import '../../vars.css';
 
 .base {
-  text-align: center;
-  border-radius: 2px;
-  padding: .4em;
-  display: block;
-  width: 100%;
+	text-align: center;
+	border-radius: 3px;
+	padding: 0 var(--spacing);
+	display: block;
+	width: 100%;
+	height: var(--height);
+	box-sizing: border-box;
 }
 
 .base:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--border-darker);
+	outline: none;
+	box-shadow: 0 0 0 1px var(--bright);
+}
+
+.base:active {
+	filter: brightness(80%);
 }
 
 .root {
-  composes: base;
-  color: #fff;
-  background-image: linear-gradient(to bottom, var(--bright) 0%, var(--bright-darker) 100%);
-  border: 1px solid var(--bright-darker);
+	composes: base;
+	color: #fff;
+	background-image: linear-gradient(
+		to bottom,
+		var(--bright) 0%,
+		var(--bright-darker) 100%
+	);
+	border: 1px solid var(--bright-darker);
 }
 
 .root:hover {
-  border: 1px solid var(--bright-darkerer);
-}
-
-.root:active {
-  border: 1px solid var(--bright-darkerer);
-  background-image: linear-gradient(to bottom, var(--bright-darker) 0%, var(--bright-darkerer) 100%);
+	border: 1px solid var(--bright-darkerer);
 }
 
 .secondary {
-  composes: base;
-  background-image: linear-gradient(to bottom, rgba(0,0,0,.0), rgba(0,0,0,.05) 100%);
-  border: 1px solid var(--border);
+	composes: base;
+	background-image: linear-gradient(
+		to bottom,
+		rgba(0, 0, 0, 0),
+		rgba(0, 0, 0, 0.05) 100%
+	);
+	border: 1px solid var(--border);
 }
 
 .secondary:hover {
-  border-color: var(--border-darker);
+	border-color: var(--border-darker);
 }
 
-.secondary:active {
-  background-image: linear-gradient(to bottom, rgba(0,0,0,.05), rgba(0,0,0,.1) 100%);
+.inverted {
+	composes: base;
+	background: none;
+	color: #fff;
+	border: 1px solid var(--border-inverted);
 }

@@ -36,12 +36,12 @@ if (process.platform === 'win32') {
 function createWindow() {
 	// Create the browser window.
 	mainWindow = new BrowserWindow({
-		minWidth: 300,
-		maxWidth: 500,
-		minHeight: 500,
-		maximizable: false,
-		width: 350,
-		height: 500,
+		minWidth: 400,
+		minHeight: 300,
+		backgroundColor: '#ffffff',
+		titleBarStyle: process.platform === 'darwin' ? 'hidden' : null,
+		width: 600,
+		height: 400,
 		show: false,
 	});
 

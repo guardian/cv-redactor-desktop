@@ -22,6 +22,11 @@
 	background: #fff;
 }
 
+.dark {
+	color: #fff;
+	background: var(--bg-inverted);
+}
+
 .withPadding {
-	padding: var(--spacing);
+	padding: calc(var(--spacing) * 0.75) var(--spacing);
 }

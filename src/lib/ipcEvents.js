@@ -6,6 +6,8 @@ import { join } from 'path';
 const onDrop = resumes => {
 	const target = remote.dialog.showOpenDialog({
 		title: 'Select an output folder',
+		message: 'Select an output folder',
+		buttonLabel: 'Save here',
 		properties: ['openDirectory', 'createDirectory', 'promptToCreate'],
 	})[0];
 

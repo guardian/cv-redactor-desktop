@@ -12,7 +12,7 @@ const reducer = (state = initialState.cv, action) => {
 		case UPDATE_CV_POSITION:
 			return state.map(resume =>
 				Object.assign({}, resume, {
-					redactedFileName: getRedactedFileName(resume.path, action.position),
+					redactedFileName: getRedactedFileName(action.position),
 				})
 			);
 		case CLEAR_CV:
@@ -22,7 +22,7 @@ const reducer = (state = initialState.cv, action) => {
 				...state,
 				{
 					path: action.path,
-					redactedFileName: getRedactedFileName(action.path, action.position),
+					redactedFileName: getRedactedFileName(action.position),
 				},
 			];
 		case REMOVE_CV:
