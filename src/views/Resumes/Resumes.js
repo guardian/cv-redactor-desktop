@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as cvActions from 'store/actions/cv';
@@ -36,39 +36,29 @@ class PreResumes extends Component {
 				<form onSubmit={e => this.onSubmit(e)} className={styles.root}>
 					<SectionWrap>
 						<Section bleeds white grows>
-							{resumes.length > 0 ? (
-								<div className={styles.cvTable}>
-									<TableWrap>
-										{resumes.map(resume => (
-											<ResumeWrap
-												key={resume.path}
-												path={resume.path}
-												redactedFileName={resume.redactedFileName}
-											/>
-										))}
-									</TableWrap>
-									<div className={styles.pad}>
-										<HomeDndPrompt onBrowse={e => this.onAddAnother(e)} />
-									</div>
+							<div className={styles.cvTable}>
+								<TableWrap>
+									{resumes.map(resume => (
+										<ResumeWrap
+											key={resume.path}
+											path={resume.path}
+											redactedFileName={resume.redactedFileName}
+										/>
+									))}
+								</TableWrap>
+								<div className={styles.pad}>
+									<HomeDndPrompt />
 								</div>
-							) : (
-								<div className={styles.empty}>
-									<HomeDndPrompt big onBrowse={e => this.onAddAnother(e)} />
-								</div>
-							)}
+							</div>
 						</Section>
-						{resumes.length > 0 && (
-							<Section>
-								<PositionField />
-							</Section>
-						)}
-						{resumes.length > 0 && (
-							<Section>
-								<Button type="submit">
-									Redact {resumes.length} {resumes.length === 1 ? 'CV' : 'CVs'}
-								</Button>
-							</Section>
-						)}
+						<Section>
+							<PositionField />
+						</Section>
+						<Section>
+							<Button type="submit">
+								Redact {resumes.length} {resumes.length === 1 ? 'CV' : 'CVs'}
+							</Button>
+						</Section>
 					</SectionWrap>
 				</form>
 			</DropTarget>
