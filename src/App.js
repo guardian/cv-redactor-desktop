@@ -9,7 +9,6 @@ class PreApp extends Component {
 	render() {
 		return (
 			<div className="flex">
-				{remote.process.platform === 'darwin' && <MacTitleBar />}
 				<div className="flex-fill">
 					<Resumes onDrop={onDrop} />
 				</div>

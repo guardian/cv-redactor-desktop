@@ -16,7 +16,7 @@ class PrePositionField extends Component {
 		const { position } = this.props;
 		return (
 			<ListWrap>
-				<InputWrap title="Prefix">
+				<InputWrap title="Job title">
 					<input
 						type="text"
 						value={position}
@@ -26,7 +26,8 @@ class PrePositionField extends Component {
 					/>
 				</InputWrap>
 				<HelpTextWrap>
-					Redacted CV's will be named {getRedactedFileName(position, 'id')}
+					Redacted CV's will be named{' '}
+					{getRedactedFileName(position || '{job title}', 'id')}
 				</HelpTextWrap>
 			</ListWrap>
 		);

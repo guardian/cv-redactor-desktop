@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as cvActions from 'store/actions/cv';
+import { requestPdf } from 'lib/ipcEvents';
+
 import { HelpTextWrap } from 'elements/Section/HelpTextWrap/HelpTextWrap';
 import { Section } from 'elements/Section/Section';
 import { SectionWrap } from 'elements/Section/SectionWrap/index.js';
@@ -6,7 +12,7 @@ import { HomeDndPrompt } from 'elements/HomeDndPrompt/HomeDndPrompt';
 import { DropTarget } from '../../elements/DropTarget/DropTarget';
 import { PositionField } from 'elements/PositionField/PositionField';
 
-export class Dropper extends Component {
+export class PreDropper extends Component {
 	render() {
 		return (
 			<DropTarget>
@@ -27,3 +33,12 @@ export class Dropper extends Component {
 		);
 	}
 }
+
+export const Resumes = connect(
+	state => ({
+		resumes: state.cv,
+	}),
+	dispatch => ({
+		cvActions: bindActionCreators(cvActions, dispatch),
+	})
+)(PreDropper);
