@@ -21,8 +21,7 @@
 		"demo"
 	],
 	"build": {
-		"appId": "com.theguardian.cv-redactor",
-		"app-category-type": "public.app-category.productivity"
+		"appId": "com.theguardian.cv-redactor"
 	},
 	"author": "GitHub",
 	"license": "CC0-1.0",
