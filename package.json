@@ -17,11 +17,13 @@
 		"tutorial",
 		"demo"
 	],
+	"build": {
+		"appId": "com.theguardian.cv-redactor"
+	},
 	"author": "GitHub",
 	"license": "CC0-1.0",
 	"dependencies": {
 		"convert-array-to-csv": "^1.0.4",
-		"electron": "^1.8.6",
 		"hummus": "^1.0.90",
 		"lodash": "^4.17.11",
 		"react": "^16.3.2",
@@ -36,12 +38,13 @@
 		"uniqid": "^5.0.3"
 	},
 	"devDependencies": {
+		"electron": "^1.8.6",
+		"electron-builder": "^20.38.3",
 		"babel-core": "^6.26.3",
 		"babel-loader": "^7.1.4",
 		"babel-preset-react": "^6.24.1",
 		"babili-webpack-plugin": "^0.1.2",
 		"css-loader": "^0.28.11",
-		"electron": "^1.8.6",
 		"electron-devtools-installer": "^2.2.4",
 		"electron-packager": "^12.0.1",
 		"file-loader": "^1.1.11",
