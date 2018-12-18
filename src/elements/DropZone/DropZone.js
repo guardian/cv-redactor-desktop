@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as cvActions from 'store/actions/cv';
 
-import styles from './DropTarget.css';
+import styles from './DropZone.css';
 
-class PreDropTarget extends Component {
+class PreDropZone extends Component {
 	onDrop(ev) {
 		ev.preventDefault();
 		this.props.cvActions.addCv([...ev.dataTransfer.files].map(_ => _.path));
@@ -20,9 +20,9 @@ class PreDropTarget extends Component {
 	}
 }
 
-export const DropTarget = connect(
+export const DropZone = connect(
 	state => ({}),
 	dispatch => ({
 		cvActions: bindActionCreators(cvActions, dispatch),
 	})
-)(PreDropTarget);
+)(PreDropZone);

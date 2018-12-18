@@ -7,7 +7,8 @@
 		"prod": "webpack --mode production --config webpack.build.config.js && electron --noDevServer .",
 		"start": "webpack-dev-server --hot --host 0.0.0.0 --port 9292 --config=./webpack.dev.config.js --mode development",
 		"build": "webpack --config webpack.build.config.js --mode production",
-		"package": "npm run build && electron-packager ./ --out=./builds --platform=all"
+		"postinstall": "electron-builder install-app-deps",
+		"dist": "npm run build && electron-builder build --publish onTagOrDraft"
 	},
 	"repository": "https://github.com/electron/electron-quick-start",
 	"keywords": [
@@ -17,11 +18,47 @@
 		"tutorial",
 		"demo"
 	],
-	"author": "GitHub",
-	"license": "CC0-1.0",
+	"build": {
+		"appId": "com.theguardian.cv-redactor",
+		"category": "public.app-category.education",
+		"files": [
+			"dist/",
+			"node_modules/",
+			"public/",
+			"main.js",
+			"index.html",
+			"package.json"
+		],
+		"dmg": {
+			"contents": [
+				{
+					"x": 130,
+					"y": 220
+				},
+				{
+					"x": 410,
+					"y": 220,
+					"type": "link",
+					"path": "/Applications"
+				}
+			]
+		},
+		"win": {
+			"target": "nsis"
+		},
+		"linux": {
+			"target": [
+				"AppImage",
+				"deb"
+			]
+		}
+	},
+	"directories": {
+		"output": "release"
+	},
+	"author": "The Guardian",
 	"dependencies": {
 		"convert-array-to-csv": "^1.0.4",
-		"electron": "^1.8.6",
 		"hummus": "^1.0.90",
 		"lodash": "^4.17.11",
 		"react": "^16.3.2",
@@ -42,6 +79,7 @@
 		"babili-webpack-plugin": "^0.1.2",
 		"css-loader": "^0.28.11",
 		"electron": "^1.8.6",
+		"electron-builder": "^20.38.3",
 		"electron-devtools-installer": "^2.2.4",
 		"electron-packager": "^12.0.1",
 		"file-loader": "^1.1.11",

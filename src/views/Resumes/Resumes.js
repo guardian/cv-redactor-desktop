@@ -10,7 +10,7 @@ import { SectionWrap } from 'elements/Section/SectionWrap';
 import { TableWrap } from 'elements/Section/TableWrap/TableWrap';
 import { ResumeWrap } from 'elements/ResumeWrap/ResumeWrap';
 import { Button } from 'elements/Button/Button';
-import { DropTarget } from 'elements/DropTarget/DropTarget';
+import { DropZone } from 'elements/DropZone/DropZone';
 import { PositionField } from 'elements/PositionField/PositionField';
 import { HomeDndPrompt } from 'elements/HomeDndPrompt/HomeDndPrompt';
 
@@ -36,7 +36,7 @@ class PreResumes extends Component {
 	render() {
 		const { resumes } = this.props;
 		return (
-			<DropTarget>
+			<DropZone>
 				<form onSubmit={e => this.onSubmit(e)} className={styles.root}>
 					<SectionWrap>
 						<Section grows>
@@ -60,7 +60,7 @@ class PreResumes extends Component {
 						</Section>
 					</SectionWrap>
 				</form>
-			</DropTarget>
+			</DropZone>
 		);
 	}
 }
