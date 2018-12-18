@@ -20,7 +20,6 @@
 	],
 	"build": {
 		"appId": "com.theguardian.cv-redactor",
-		"category": "public.app-category.education",
 		"files": [
 			"dist/",
 			"node_modules/",
@@ -52,9 +51,6 @@
 				"deb"
 			]
 		}
-	},
-	"directories": {
-		"output": "release"
 	},
 	"author": "The Guardian",
 	"dependencies": {
