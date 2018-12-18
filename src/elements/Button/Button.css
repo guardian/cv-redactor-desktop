@@ -8,6 +8,7 @@
 	width: 100%;
 	height: var(--height);
 	box-sizing: border-box;
+	white-space: nowrap;
 }
 
 .base:focus {
