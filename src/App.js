@@ -1,23 +1,23 @@
-import React, { Component, Fragment } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { onDrop } from './lib/ipcEvents';
-import { MacTitleBar } from 'elements/Section/MacTitleBar/MacTitleBar';
-import { Resumes } from 'views/Resumes/Resumes';
-import { remote } from 'electron';
 
-class PreApp extends Component {
-	render() {
-		return (
-			<div className="flex">
-				{remote.process.platform === 'darwin' && <MacTitleBar />}
-				<div className="flex-fill">
-					<Resumes onDrop={onDrop} />
-				</div>
-			</div>
-		);
-	}
-}
+import { Resumes } from 'views/Resumes/Resumes';
+import { Dropper } from 'views/Dropper/Dropper';
+import { SetPosition } from 'views/SetPosition/SetPosition';
+
+const PreApp = ({ cv, hasSubmitted }) =>
+	cv.length > 0 ? (
+		hasSubmitted ? (
+			<SetPosition onDrop={onDrop} />
+		) : (
+			<Resumes />
+		)
+	) : (
+		<Dropper />
+	);
 
 export const App = connect(state => ({
-	resumes: state.cv,
+	cv: state.cv,
+	hasSubmitted: state.hasSubmitted,
 }))(PreApp);

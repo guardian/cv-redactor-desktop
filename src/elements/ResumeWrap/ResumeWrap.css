@@ -1,14 +1,13 @@
 @import '../../vars.css';
 
 .root {
-	padding: calc(var(--spacing) * 0.5) 0;
+	padding: var(--spacing) 0;
 	display: flex;
 	align-items: center;
 }
 
 .root:focus {
 	outline: none;
-	background: var(--bg);
 }
 
 .fileRegion,

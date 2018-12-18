@@ -28,3 +28,15 @@
 	align-items: center;
 	height: 100%;
 }
+
+.pad {
+	padding: var(--spacing);
+}
+
+.cvTable {
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: space-between;
+}
