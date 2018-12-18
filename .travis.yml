@@ -43,5 +43,8 @@ before_script:
   - sh -e /etc/init.d/xvfb start &
   - sleep 3
 
-script:
-  - npm run dist
+deploy:
+  provider: script
+  script: npm run dist
+  on:
+    branch: master
