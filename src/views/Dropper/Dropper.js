@@ -4,12 +4,12 @@ import { HelpTextWrap } from 'elements/Section/HelpTextWrap/HelpTextWrap';
 import { Section } from 'elements/Section/Section';
 import { SectionWrap } from 'elements/Section/SectionWrap/index.js';
 import { HomeDndPrompt } from 'elements/HomeDndPrompt/HomeDndPrompt';
-import { DropTarget } from '../../elements/DropTarget/DropTarget';
+import { DropZone } from '../../elements/DropZone/DropZone';
 
 export class Dropper extends Component {
 	render() {
 		return (
-			<DropTarget>
+			<DropZone>
 				<SectionWrap>
 					<Section center white grows>
 						<HomeDndPrompt big />
@@ -20,7 +20,7 @@ export class Dropper extends Component {
 						</HelpTextWrap>
 					</Section>
 				</SectionWrap>
-			</DropTarget>
+			</DropZone>
 		);
 	}
 }

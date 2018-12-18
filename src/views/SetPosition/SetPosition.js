@@ -9,7 +9,7 @@ import { Section } from 'elements/Section/Section';
 import { SectionWrap } from 'elements/Section/SectionWrap';
 
 import { Button } from 'elements/Button/Button';
-import { DropTarget } from 'elements/DropTarget/DropTarget';
+import { DropZone } from 'elements/DropZone/DropZone';
 import { PositionField } from 'elements/PositionField/PositionField';
 
 class PreSetPosition extends Component {
@@ -30,7 +30,7 @@ class PreSetPosition extends Component {
 	render() {
 		const { resumes } = this.props;
 		return (
-			<DropTarget>
+			<DropZone>
 				<form onSubmit={e => this.onSubmit(e)} style={{ height: '100%' }}>
 					<SectionWrap>
 						<Section grows center>
@@ -43,7 +43,7 @@ class PreSetPosition extends Component {
 						</Section>
 					</SectionWrap>
 				</form>
-			</DropTarget>
+			</DropZone>
 		);
 	}
 }
