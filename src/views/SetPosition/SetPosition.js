@@ -33,7 +33,7 @@ class PreSetPosition extends Component {
 			<DropTarget>
 				<form onSubmit={e => this.onSubmit(e)} style={{ height: '100%' }}>
 					<SectionWrap>
-						<Section white grows center>
+						<Section grows center>
 							<PositionField />
 						</Section>
 						<Section>

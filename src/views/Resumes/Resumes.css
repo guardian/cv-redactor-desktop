@@ -34,9 +34,13 @@
 }
 
 .cvTable {
-	min-height: 100%;
+	box-sizing: border-box;
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
 	justify-content: space-between;
+	border: 1px solid var(--border);
+	border-radius: 3px;
+	height: 100%;
+	overflow: scroll;
 }

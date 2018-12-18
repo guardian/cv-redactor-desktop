@@ -22,9 +22,9 @@ export const PreHomeDndPrompt = ({ cvActions, big }) => (
 			}}
 		/>
 		<HelpTextWrap className={styles.help} big={big}>
-			Drag and drop CVs here
+			{big ? 'Drag and drop CVs here' : 'Add more CVs'}
 		</HelpTextWrap>
-		<HelpTextWrap className={styles.help}>or</HelpTextWrap>
+		{big && <HelpTextWrap className={styles.help}>or</HelpTextWrap>}
 		<Button
 			secondary={!big}
 			type="button"
