@@ -47,6 +47,6 @@ script:
 
 deploy:
   provider: script
-  script: npm run dist
+  script: npm i && npm run dist
   on:
     branch: master
