@@ -15,7 +15,11 @@ module.exports = {
 		rules: [
 			{
 				test: /\.css$/, // loader CSS
-				use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
+				use: [
+					MiniCssExtractPlugin.loader,
+					'css-loader?modules',
+					'postcss-loader',
+				],
 				include: defaultInclude,
 			},
 			{
