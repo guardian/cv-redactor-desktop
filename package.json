@@ -7,7 +7,10 @@
 		"prod": "webpack --mode production --config webpack.build.config.js && electron --noDevServer .",
 		"start": "webpack-dev-server --hot --host 0.0.0.0 --port 9292 --config=./webpack.dev.config.js --mode development",
 		"build": "webpack --config webpack.build.config.js --mode production",
-		"package": "npm run build && electron-packager ./ --out=./builds --platform=all"
+		"package": "npm run build && electron-packager ./ --out=./builds --platform=all",
+		"dist": "build",
+		"dist-x": "build -ml",
+		"release": "build"
 	},
 	"repository": "https://github.com/electron/electron-quick-start",
 	"keywords": [
@@ -18,7 +21,8 @@
 		"demo"
 	],
 	"build": {
-		"appId": "com.theguardian.cv-redactor"
+		"appId": "com.theguardian.cv-redactor",
+		"app-category-type": "public.app-category.productivity"
 	},
 	"author": "GitHub",
 	"license": "CC0-1.0",
