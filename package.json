@@ -21,6 +21,7 @@
 			"dist/",
 			"node_modules/",
 			"public/",
+			"src/",
 			"main.js",
 			"index.html",
 			"package.json"
