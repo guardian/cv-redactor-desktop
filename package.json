@@ -1,7 +1,7 @@
 {
-	"name": "redactor-test",
-	"version": "1.0.0",
-	"description": "A minimal Electron application",
+	"name": "cv-redactor",
+	"version": "0.0.1",
+	"description": "Redact cvs",
 	"main": "main.js",
 	"scripts": {
 		"prod": "webpack --mode production --config webpack.build.config.js && electron --noDevServer .",
@@ -10,13 +10,10 @@
 		"postinstall": "electron-builder install-app-deps",
 		"dist": "npm run build && electron-builder build --publish always"
 	},
-	"repository": "https://github.com/electron/electron-quick-start",
+	"repository": "https://github.com/guardian/cv-redactor-desktop",
 	"keywords": [
-		"Electron",
-		"quick",
-		"start",
-		"tutorial",
-		"demo"
+		"redactor",
+		"cv"
 	],
 	"build": {
 		"appId": "com.theguardian.cv-redactor",
