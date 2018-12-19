@@ -8,7 +8,7 @@
 		"start": "webpack-dev-server --hot --host 0.0.0.0 --port 9292 --config=./webpack.dev.config.js --mode development",
 		"build": "webpack --config webpack.build.config.js --mode production",
 		"postinstall": "electron-builder install-app-deps",
-		"dist": "npm run build && electron-builder build --publish onTagOrDraft"
+		"dist": "npm run build && electron-builder build --publish always"
 	},
 	"repository": "https://github.com/electron/electron-quick-start",
 	"keywords": [
