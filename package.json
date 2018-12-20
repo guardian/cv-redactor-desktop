@@ -16,9 +16,6 @@
 	],
 	"build": {
 		"appId": "com.theguardian.cv-redactor",
-		"directories": {
-			"app": "./src/"
-		},
 		"files": [
 			"dist/",
 			"node_modules/",
