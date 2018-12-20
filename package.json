@@ -49,7 +49,7 @@
 			]
 		}
 	},
-	"author": "The Guardian <userhelp@theguardian.com>",
+	"author": "The Guardian <cv.redactor@theguardian.com>",
 	"dependencies": {
 		"convert-array-to-csv": "^1.0.4",
 		"hummus": "^1.0.90",
