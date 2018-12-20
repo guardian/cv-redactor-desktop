@@ -1,6 +1,6 @@
 {
 	"name": "cv-redactor",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"description": "Redact cvs",
 	"main": "main.js",
 	"scripts": {
